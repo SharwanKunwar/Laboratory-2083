@@ -11,18 +11,29 @@ abstract class RealLifeProblemsManager{
     //            * Check if the account ever went negative (overdraft) at any point
     //            * Print a status: "Account Healthy" if final balance >= 0, else "Account Overdrawn"
     // */
-    abstract public void BankAccountTransactionSystem(int[] arr);
+    abstract void BankAccountTransactionSystem(int[] arr);
 
     // problem02:
-    abstract public void StudentGradeReportSystem(int[] marks);
+    abstract void StudentGradeReportSystem(int[] marks);
 
     // Problem03:
-    abstract public void InventoryManagementSystem(String[] items, int[] quantities);
+    abstract void InventoryManagementSystem(String[] items, int[] quantities);
 
     //Problem04:
-    abstract public void SuperMarketBillingSystem(int[] prices);
+    abstract void SuperMarketBillingSystem(int[] prices);
 
-    
+    //Problem05:
+    /*
+        You are building a vote counting system. Votes are stored as an array of candidate numbers (1, 2, or 3). Your program must count votes, find the winner, and detect invalid votes.
+        Your program must:
+            * Count votes for each candidate (1, 2, 3)
+            * Find the winner (most votes)
+            * Detect invalid votes (anything other than 1, 2, 3)
+            * Calculate each candidate's vote percentage
+            * Detect if there is a tie between any candidates
+
+     */
+    abstract void ElectionVoteCounterSystem(int[] votes);
 
 }
 
@@ -177,6 +188,11 @@ public class RealLifeProblems extends RealLifeProblemsManager{
         }
         System.out.println("Final Bill : "+(totalCost-discountAmount));
 
+
+    }
+
+    @Override
+    void ElectionVoteCounterSystem(int[] votes) {
 
     }
 
