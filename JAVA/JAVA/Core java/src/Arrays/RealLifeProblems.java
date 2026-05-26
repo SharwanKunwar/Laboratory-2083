@@ -1,40 +1,12 @@
 package Arrays;
 
 abstract class RealLifeProblemsManager{
-
-    // Problem01 : /*
-    //    You are building a simple transaction tracker for a bank. A customer makes a series of transactions stored in an array — positive values = deposits, negative values = withdrawals.
-    //    Your program must:
-    //            * Calculate the final balance (starting from Rs. 0)
-    //            * Find the largest deposit and largest withdrawal
-    //            * Count total deposits and withdrawals
-    //            * Check if the account ever went negative (overdraft) at any point
-    //            * Print a status: "Account Healthy" if final balance >= 0, else "Account Overdrawn"
-    // */
     abstract void BankAccountTransactionSystem(int[] arr);
-
-    // problem02:
     abstract void StudentGradeReportSystem(int[] marks);
-
-    // Problem03:
     abstract void InventoryManagementSystem(String[] items, int[] quantities);
-
-    //Problem04:
     abstract void SuperMarketBillingSystem(int[] prices);
-
-    //Problem05:
-    /*
-        You are building a vote counting system. Votes are stored as an array of candidate numbers (1, 2, or 3). Your program must count votes, find the winner, and detect invalid votes.
-        Your program must:
-            * Count votes for each candidate (1, 2, 3)
-            * Find the winner (most votes)
-            * Detect invalid votes (anything other than 1, 2, 3)
-            * Calculate each candidate's vote percentage
-            * Detect if there is a tie between any candidates
-
-     */
     abstract void ElectionVoteCounterSystem(int[] votes);
-
+    abstract void ElectionVoteCounterPremiumSystem(int[] votes);
 }
 
 
@@ -192,7 +164,116 @@ public class RealLifeProblems extends RealLifeProblemsManager{
     }
 
     @Override
-    void ElectionVoteCounterSystem(int[] votes) {
+    public void ElectionVoteCounterSystem(int[] votes) {
+
+        System.out.println("------------ Election Vote Counter System------------");
+
+        // Variables
+        int size = votes.length;
+        int validVotes = 0;
+        int invalidVotes= 0;
+        int candidate01 = 0;
+        int candidate02 = 0;
+        int candidate03 = 0;
+
+        for(int i = 0; i < size; i++){
+                if(votes[i] >= 1 && votes[i] <= 3 ){
+                    validVotes++;
+                    if(votes[i] == 1){
+                        candidate01++;
+                    }
+                    if(votes[i] == 2){
+                        candidate02++;
+                    }
+                    if(votes[i] == 3){
+                        candidate03++;
+                    }
+                }else {
+                    invalidVotes++;
+                }
+        }
+        System.out.println("\nOutput :  ");
+        System.out.println("Total Votes Cast : "+size);
+        System.out.println("Valid Votes      : "+validVotes);
+        System.out.println("Invalid Votes    : "+invalidVotes);
+        System.out.printf("\nCandidate 1 : %d votes (%.2f%%)%n", candidate01, (double)candidate01/validVotes*100);
+        System.out.printf("Candidate 2 : %d votes (%.2f%%)%n", candidate02, (double)candidate02/validVotes*100);
+        System.out.printf("Candidate 3 : %d votes (%.2f%%)%n", candidate03, (double)candidate03/validVotes*100);
+
+        System.out.print("\nResult : ");
+        if(candidate01 == candidate02 && candidate02 == candidate03){
+            System.out.println("Three-way tie between all candidates!");
+        }else if(candidate01 == candidate02 && candidate01!= candidate03){
+            System.out.println("Tie Between Candidate01 and  Candidate02");
+        }else if(candidate02 == candidate03 && candidate02!= candidate01){
+            System.out.println("Tie Between Candidate02 and  Candidate03");
+        }else if(candidate03 == candidate01 && candidate03!= candidate02){
+            System.out.println("Tie Between Candidate03 and  Candidate01");
+        }else {
+            if(candidate01 > candidate02 && candidate01 >  candidate03){
+                System.out.println("Candidate01 wins!.");
+            }else if(candidate02 > candidate03 && candidate02 >  candidate01){
+                System.out.println("Candidate02 wins!.");
+            }else if(candidate03 > candidate01 && candidate03 >  candidate02){
+                System.out.println("Candidate03 wins!.");
+            }
+        }
+
+    }
+
+    @Override
+    public void ElectionVoteCounterPremiumSystem(int[] votes) {
+        System.out.println("------------ Election Vote Counter System------------");
+
+        // Variables
+        int size = votes.length;
+        int validVotes = 0;
+        int invalidVotes= 0;
+        int[] candidates = new int[4];
+
+
+        //enhanced counter
+        for(int vote:votes){
+            if(vote >= 1 && vote <= 3 ){
+                candidates[vote]++;
+                validVotes++;
+            }else {
+                invalidVotes++;
+            }
+        }
+
+        System.out.println("\nOutput :  ");
+        System.out.println("Total Votes Cast : "+size);
+        System.out.println("Valid Votes      : "+validVotes);
+        System.out.println("Invalid Votes    : "+invalidVotes);
+        System.out.println();
+        for(int i = 1; i <= 3; i++){
+            System.out.printf("Candidate%d : %d votes (%.2f%%)%n", i, candidates[i], (double)candidates[i]/validVotes*100);
+        }
+
+        //  max is the winner here
+        int max = 0;
+        for(int i = 1; i <= 3; i++){
+            if(candidates[i] > max) max = candidates[i];
+        }
+
+        System.out.print("\nResult : ");
+        StringBuilder winners = new StringBuilder();
+        int winnerCount = 0;
+        for(int i = 1; i <= 3; i++){
+            if(candidates[i] == max){
+                if(winnerCount > 0) winners.append(" and ");
+                winners.append("Candidate ").append(i);
+                winnerCount++;
+            }
+        }
+
+        if(winnerCount > 1){
+            System.out.println("Tie between " + winners + "!");
+        } else {
+            System.out.println(winners + " wins!");
+        }
+
 
     }
 

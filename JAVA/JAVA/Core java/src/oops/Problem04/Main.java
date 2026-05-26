@@ -24,11 +24,11 @@ public class Main {
         Human h = new Human();
 
         w.walk();
-        w.talk();
-        w.think();
+//        w.talk();
+//        w.think();
 
         t.talk();
-        t.walk();
+//        t.walk();
 
         h.walk();
         h.talk();
