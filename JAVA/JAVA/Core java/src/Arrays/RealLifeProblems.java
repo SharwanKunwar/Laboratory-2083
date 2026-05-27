@@ -1,5 +1,9 @@
 package Arrays;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 abstract class RealLifeProblemsManager{
     abstract void BankAccountTransactionSystem(int[] arr);
     abstract void StudentGradeReportSystem(int[] marks);
@@ -7,6 +11,7 @@ abstract class RealLifeProblemsManager{
     abstract void SuperMarketBillingSystem(int[] prices);
     abstract void ElectionVoteCounterSystem(int[] votes);
     abstract void ElectionVoteCounterPremiumSystem(int[] votes);
+    abstract void CricketScoreAnalyzer(int[] runs);
 }
 
 
@@ -273,6 +278,54 @@ public class RealLifeProblems extends RealLifeProblemsManager{
         } else {
             System.out.println(winners + " wins!");
         }
+
+
+    }
+
+    @Override
+    public void CricketScoreAnalyzer(int[] runs) {
+        int size = runs.length;
+        int teamTotal = 0;
+        int ducksTotal = 0;
+        int centuries = 0;
+        int halfCenturies= 0;
+        List<Integer> halfCenturiesScore = new ArrayList<Integer>();
+        List<Integer> centuriesScore = new ArrayList<Integer>();
+        List<Integer> topThreeScorers = new ArrayList<Integer>();
+        int[] copyArray = runs.clone();
+        Arrays.sort(copyArray);
+
+
+
+        for(int i = 0; i < size; i++){
+            teamTotal += runs[i];
+            if(runs[i] == 0) ducksTotal++;
+            if(runs[i]>=50 && runs[i]<100){
+                halfCenturies++;
+                halfCenturiesScore.add(runs[i]);
+            }
+            if(runs[i] >= 100){
+                centuries++;
+                centuriesScore.add(runs[i]);
+            }
+        }
+        for(int i = size - 3; i < size; i++){
+            topThreeScorers.add(copyArray[i]);
+        }
+
+        int max = copyArray[size - 1];
+        int secondMax = copyArray[size - 2];
+
+
+        System.out.println("------------ Cricket Score Analyzer -----------");
+        System.out.println("Team Total : "+ teamTotal);
+        System.out.format("Average Runs : %.2f%n", (double)teamTotal/size);
+        System.out.println("Ducks (0s) : "+ducksTotal);
+        System.out.println("Half Centuries : "+halfCenturies+" "+(halfCenturiesScore));
+        System.out.println("Centuries  : "+centuries+" "+centuriesScore);
+        System.out.println();
+        System.out.println("Top 3 Scorers : "+ topThreeScorers);
+        System.out.println("Highest Partnership : "+(max+secondMax)+" ("+max+"+"+secondMax+")");
 
 
     }

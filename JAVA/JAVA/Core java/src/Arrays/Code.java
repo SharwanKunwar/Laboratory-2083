@@ -2,8 +2,7 @@ package Arrays;
 
 public class Code {
     static void main(String[] args) {
-
-        RealLifeProblems PremiumElectionVoteCounter = new  RealLifeProblems();
-        PremiumElectionVoteCounter.ElectionVoteCounterPremiumSystem( new int[] {1, 2, 1, 3, 2, 1, 4, 2, 1, 3, 0, 2, 1, 3, 2} );
+        RealLifeProblems analyzeCricketScore = new RealLifeProblems();
+        analyzeCricketScore.CricketScoreAnalyzer(new int[] {45, 0, 83, 112, 7, 55, 0, 134, 23, 67});
     }
 }
