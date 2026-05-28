@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -36,15 +37,11 @@ public class Main {
 
             switch(op){
                 case 1:
-                    space(40);
-                    System.out.println("--------------------- Adding book process ---");
-                    int id;
                     String name;
                     String author;
                     int price;
-
-                    System.out.print("Book ID: ");
-                    id = in.nextInt();
+                    space(40);
+                    System.out.println("--------------------- Adding book process ---");
                     System.out.print("Book Name : ");
                     in.nextLine();
                     name = in.nextLine();
@@ -52,18 +49,18 @@ public class Main {
                     author = in.nextLine();
                     System.out.print("Book Price : ");
                     price = in.nextInt();
-
-                     book = new Book(id,name,author,price);
-                    library.addBook(book);
-
-                  
+                        book = new Book(name,author,price);
+                        library.addBook(book);
                     break;
+
                 case 2:
                     space(40);
                     System.out.println("--------------------------- Displaying books ---");
-                    library.displayBook();
+                        library.displayBook();
                     break;
 
+                default:
+                    System.out.println("Invalid input");
             }
         }while(op != 0);
         // ------------------------------------------------------------------------------------
