@@ -8,23 +8,24 @@ public class Main {
     }
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
-        Library library = new Library();
+          Scanner in = new Scanner(System.in);
+            Library library = new Library();
+            Book book;
 
 
-        // pre-loaded books
-        Book book1 = new Book(1,"The power", "Sharwan jung kunwar", 10000);
-        Book book2 = new Book(2,"Eat That Frog", "Brain Tracy", 2000);
-        library.loadBooks(book1);
-        library.loadBooks(book2);
+      // Preloaded books
+      // Book book1 = new Book(1,"The power", "Sharwan jung kunwar", 10000);
+      // Book book2 = new Book(2,"Eat That Frog", "Brain Tracy", 2000);
+      // library.loadBooks(book1);
+      // library.loadBooks(book2);
 
-        // variables
+      // variables
         int op;
 
+        // ------------------------------------------------------------------------------------
         do{
-
             System.out.println();
-            System.out.println("------------ Library Management System ------------");
+            System.out.println("------------------- Library Management System -----");
             System.out.println("---------------------------------------------------");
             System.out.println("\t1. Add Book\t\t    2. Display Books");
             System.out.println("\t3. Issue Book\t\t4. Return Book");
@@ -36,15 +37,36 @@ public class Main {
             switch(op){
                 case 1:
                     space(40);
-                    library.addBook();
+                    System.out.println("--------------------- Adding book process ---");
+                    int id;
+                    String name;
+                    String author;
+                    int price;
+
+                    System.out.print("Book ID: ");
+                    id = in.nextInt();
+                    System.out.print("Book Name : ");
+                    in.nextLine();
+                    name = in.nextLine();
+                    System.out.print("Book Author : ");
+                    author = in.nextLine();
+                    System.out.print("Book Price : ");
+                    price = in.nextInt();
+
+                     book = new Book(id,name,author,price);
+                    library.addBook(book);
+
+                  
                     break;
                 case 2:
                     space(40);
+                    System.out.println("--------------------------- Displaying books ---");
                     library.displayBook();
                     break;
 
             }
         }while(op != 0);
+        // ------------------------------------------------------------------------------------
 
     }
 }

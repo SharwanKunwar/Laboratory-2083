@@ -12,38 +12,19 @@ public class Library extends LibraryService{
 
 
     @Override
-    public void addBook() {
-
-        int id;
-        String name;
-        String author;
-        int price;
-
-        System.out.print("ID: ");
-        id = sc.nextInt();
-        System.out.print("Enter your book Name : ");
-        sc.nextLine();
-        name = sc.nextLine();
-        System.out.print("Enter your book Author : ");
-        author = sc.nextLine();
-        System.out.print("Enter your book Price : ");
-        price = sc.nextInt();
-
-        Book book = new Book(id,name,author,price);
+    public void addBook(Book book) {
         books.add(book);
     }
 
     @Override
     public void displayBook() {
-        if(books.isEmpty()){
-            System.out.println("There is no books in the library");
-        }
+        if(books.isEmpty()) System.out.println("\n\t There is no books in the library yet.!");
         for(Book book : books){
-            System.out.println("------------------------- Displaying books "+book.id+" ---");
             System.out.println("Book ID : "+book.id);
             System.out.println("Title : "+book.title);
             System.out.println("Author : "+book.author);
             System.out.println("Price : "+book.price);
+            System.out.println("---------------------------------------");
 
         }
     }
@@ -51,6 +32,11 @@ public class Library extends LibraryService{
     @Override
     public void loadBooks(Book book) {
         books.add(book);
+    }
+
+    @Override
+    public void deleteBook() {
+
     }
 
 }
