@@ -42,7 +42,7 @@ public class Main {
                     String author;
                     int price;
                     space(40);
-                    System.out.println("--------------------- Adding book process ---");
+                    System.out.println("--------------------------- Adding book process ---");
                     System.out.print("Book Name : ");
                     in.nextLine();
                     name = in.nextLine();
@@ -56,14 +56,14 @@ public class Main {
 
                 case 2:
                     space(40);
-                    System.out.println("--------------------------- Displaying Books ---");
+                    System.out.println("------------------------------ Displaying Books ---");
                         library.displayBook();
                     break;
 
                 case 5:
                     String holdId;
                     space(40);
-                    System.out.println("--------------------------- Deleting Books ---");
+                    System.out.println("-------------------------------- Deleting Books ---");
                     System.out.print("Book ID: ");
                     holdId = in.next();
                         library.deleteBook(holdId);

@@ -32,7 +32,7 @@ public class Library extends LibraryService {
             System.out.println("Title : " + book.title);
             System.out.println("Author : " + book.author);
             System.out.println("Price : " + book.price);
-            System.out.println("---------------------------------------");
+            System.out.println("----------------------------------");
 
         }
     }
@@ -46,23 +46,24 @@ public class Library extends LibraryService {
     public void deleteBook(String referenceId) {
         List<Book> holdDeletedBookDetails = new ArrayList<>();
         holdDeletedBookDetails.addAll(books);
-        boolean isDeleted = false;
+        boolean isMatched = false;
 
         if (holdDeletedBookDetails.isEmpty()) return;
         for(Book book : holdDeletedBookDetails) {
             if (book.id.equals(referenceId)) {
-                isDeleted = true;
+                isMatched = true;
                 break;
             }
         }
 
-        if(isDeleted){
-            System.out.println("---------------------- Deleted Book Details ---");
+        if(isMatched){
+            System.out.println("-------------------------- Deleted Book Details ---");
             System.out.println("ID : " + referenceId);
             System.out.println("Title : " + holdDeletedBookDetails.get(0).title);
             System.out.println("Author : " + holdDeletedBookDetails.get(0).author);
+            System.out.println();
             books.removeIf(book -> book.id.equals(referenceId)); // book.getId().equals(referenceId) if id is private you should use this
-        }else System.out.println("----------------------------- ID Not Found ---");
+        }else System.out.println("---------------------------------- ID Not Found ---\n");
 
     }
 
