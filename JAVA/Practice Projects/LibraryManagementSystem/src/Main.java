@@ -30,7 +30,8 @@ public class Main {
             System.out.println("---------------------------------------------------");
             System.out.println("\t1. Add Book\t\t    2. Display Books");
             System.out.println("\t3. Issue Book\t\t4. Return Book");
-            System.out.println("\t5. Delete Book\t\t0. Exit");
+            System.out.println("\t5. Delete Book\t\t6. About Us");
+            System.out.println("\t0. Exit");
             System.out.println("---------------------------------------------------");
             System.out.print("Enter : ");
             op = in.nextInt();
@@ -55,13 +56,28 @@ public class Main {
 
                 case 2:
                     space(40);
-                    System.out.println("--------------------------- Displaying books ---");
+                    System.out.println("--------------------------- Displaying Books ---");
                         library.displayBook();
                     break;
 
-                default:
-                    System.out.println("Invalid input");
+                case 5:
+                    String holdId;
+                    space(40);
+                    System.out.println("--------------------------- Deleting Books ---");
+                    System.out.print("Book ID: ");
+                    holdId = in.next();
+                        library.deleteBook(holdId);
+                    break;
+
+                case 6:
+                    space(40);
+                    System.out.println("--------------------------- About Us ---");
+                    library.aboutUs();
+                    break;
+
             }
+
+
         }while(op != 0);
         // ------------------------------------------------------------------------------------
 
