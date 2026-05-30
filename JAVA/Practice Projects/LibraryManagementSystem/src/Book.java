@@ -6,8 +6,10 @@ public class Book {
     String id;
     String title;
     String author;
+    String issuedToWhom = "none";
     Date publishAt;
     int price;
+    boolean isAvailable = true;
 
 
     // constructor

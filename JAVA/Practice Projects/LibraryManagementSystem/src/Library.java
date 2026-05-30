@@ -31,12 +31,16 @@ public class Library extends LibraryService {
             System.out.println("Book ID : " + book.id);
             System.out.println("Title : " + book.title);
             System.out.println("Author : " + book.author);
+            System.out.println("publishAt : "+book.publishAt);
+            System.out.println("isAvailable : "+((book.isAvailable)? "Yes":"No"));
+            System.out.println("IssuedTo : "+book.issuedToWhom);
             System.out.println("Price : " + book.price);
             System.out.println("----------------------------------");
 
         }
     }
 
+    // This method loading existing books
     @Override
     public void loadBooks(Book book) {
         books.add(book);
@@ -64,6 +68,28 @@ public class Library extends LibraryService {
             System.out.println();
             books.removeIf(book -> book.id.equals(referenceId)); // book.getId().equals(referenceId) if id is private you should use this
         }else System.out.println("---------------------------------- ID Not Found ---\n");
+
+    }
+
+    // This method is for issue Book to the student/seeker
+    @Override
+    public void issueBook(String referenceId, String personName) {
+        boolean isFound = false;
+        for(Book book : books){
+            if(book.id.equals(referenceId) && book.isAvailable){
+                book.isAvailable = false;
+                isFound = true;
+                book.issuedToWhom = personName;
+            }
+        }
+        if(isFound) System.out.println("\n\tBook successfully issued to "+personName);
+        else System.out.println("\n\tBook could not be issued!");
+
+    }
+
+    // This method is for return Book which is issued to student / seeker
+    @Override
+    public void returnBook(String referenceId) {
 
     }
 

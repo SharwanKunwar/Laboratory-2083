@@ -15,13 +15,14 @@ public class Main {
 
 
       // Preloaded books
-      // Book book1 = new Book(1,"The power", "Sharwan jung kunwar", 10000);
-      // Book book2 = new Book(2,"Eat That Frog", "Brain Tracy", 2000);
-      // library.loadBooks(book1);
-      // library.loadBooks(book2);
+       Book book1 = new Book("The power", "Sharwan jung kunwar", 10000);
+       Book book2 = new Book("Eat That Frog", "Brain Tracy", 2000);
+       library.loadBooks(book1);
+       library.loadBooks(book2);
 
       // variables
         int op;
+        String holdId;
 
         // ------------------------------------------------------------------------------------
         do{
@@ -60,8 +61,20 @@ public class Main {
                         library.displayBook();
                     break;
 
+                case 3:
+                    space(40);
+
+                    System.out.println("------------------------------------ Issue Book ---");
+                    System.out.print("Book ID: ");
+                    holdId = in.next();
+                    in.nextLine();
+                    System.out.print("Issued to whom : ");
+                    String issuedToWhom = in.nextLine();
+                    library.issueBook(holdId,issuedToWhom);
+                    break;
+
+
                 case 5:
-                    String holdId;
                     space(40);
                     System.out.println("-------------------------------- Deleting Books ---");
                     System.out.print("Book ID: ");
