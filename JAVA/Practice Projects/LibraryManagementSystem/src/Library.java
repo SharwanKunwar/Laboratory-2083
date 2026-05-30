@@ -51,23 +51,26 @@ public class Library extends LibraryService {
         List<Book> holdDeletedBookDetails = new ArrayList<>();
         holdDeletedBookDetails.addAll(books);
         boolean isMatched = false;
+        boolean canDelete;
 
         if (holdDeletedBookDetails.isEmpty()) return;
         for(Book book : holdDeletedBookDetails) {
             if (book.id.equals(referenceId)) {
                 isMatched = true;
+                canDelete = book.isAvailable;
+                if(isMatched && canDelete) {
+                    System.out.println("-------------------------- Deleted Book Details ---");
+                    System.out.println("ID : " + referenceId);
+                    System.out.println("Title : " + book.title);
+                    System.out.println("Author : " + book.author);
+                    System.out.println();
+                    books.remove(book); // book.getId().equals(referenceId) if id is private you should use this
+                }else System.out.println("\n---- Unavailable Issued To : "+book.issuedToWhom+" ----");
                 break;
             }
         }
 
-        if(isMatched){
-            System.out.println("-------------------------- Deleted Book Details ---");
-            System.out.println("ID : " + referenceId);
-            System.out.println("Title : " + holdDeletedBookDetails.get(0).title);
-            System.out.println("Author : " + holdDeletedBookDetails.get(0).author);
-            System.out.println();
-            books.removeIf(book -> book.id.equals(referenceId)); // book.getId().equals(referenceId) if id is private you should use this
-        }else System.out.println("---------------------------------- ID Not Found ---\n");
+
 
     }
 

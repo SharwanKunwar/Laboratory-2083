@@ -78,17 +78,23 @@ public class Main {
                     }
                     if(isOk) library.issueBook(holdId,issuedToWhom);
                     else System.out.println("----------------------------- Book ID Not Found ---");
-
-
                     break;
 
 
                 case 5:
                     space(40);
+                    boolean isMatched = false;
                     System.out.println("-------------------------------- Deleting Books ---");
                     System.out.print("Book ID: ");
                     holdId = in.next();
-                        library.deleteBook(holdId);
+                    for(Book b : library.books){
+                        if(b.id.equals(holdId)){
+                            isMatched = true;
+                            break;
+                        }
+                    }
+                    if(isMatched) library.deleteBook(holdId);
+                    else System.out.println("----------------------------- Book ID Not Found ---");
                     break;
 
                 case 6:
