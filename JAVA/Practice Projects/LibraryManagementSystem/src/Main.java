@@ -63,14 +63,23 @@ public class Main {
 
                 case 3:
                     space(40);
-
-                    System.out.println("------------------------------------ Issue Book ---");
+                    boolean isOk = false;
+                    System.out.println("----------------------------------- Issue Book ---");
                     System.out.print("Book ID: ");
                     holdId = in.next();
                     in.nextLine();
                     System.out.print("Issued to whom : ");
                     String issuedToWhom = in.nextLine();
-                    library.issueBook(holdId,issuedToWhom);
+                    for(Book b : library.books){
+                        if(b.id.equals(holdId)){
+                            isOk = true;
+                            break;
+                        }
+                    }
+                    if(isOk) library.issueBook(holdId,issuedToWhom);
+                    else System.out.println("----------------------------- Book ID Not Found ---");
+
+
                     break;
 
 

@@ -75,15 +75,30 @@ public class Library extends LibraryService {
     @Override
     public void issueBook(String referenceId, String personName) {
         boolean isFound = false;
+
+        if(books.isEmpty()) System.out.println("Books not added yet!");
         for(Book book : books){
             if(book.id.equals(referenceId) && book.isAvailable){
                 book.isAvailable = false;
                 isFound = true;
                 book.issuedToWhom = personName;
             }
+            if(isFound) {
+                System.out.println("\nBook successfully issued to "+personName);
+                System.out.println("---------------------------------------------------");
+                System.out.println("ID: "+book.id);
+                System.out.println("Title: "+book.title);
+                System.out.println("Author: "+book.author);
+                break;
+
+            }
+            else {
+                if(book.id.equals(referenceId) && !book.isAvailable){
+                    System.out.println("\nBook is already issued to "+book.issuedToWhom);
+                    break;
+                }
+            }
         }
-        if(isFound) System.out.println("\n\tBook successfully issued to "+personName);
-        else System.out.println("\n\tBook could not be issued!");
 
     }
 
