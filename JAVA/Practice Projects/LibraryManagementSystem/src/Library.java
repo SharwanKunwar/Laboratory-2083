@@ -78,7 +78,6 @@ public class Library extends LibraryService {
     @Override
     public void issueBook(String referenceId, String personName) {
         boolean isFound = false;
-
         if(books.isEmpty()) System.out.println("Books not added yet!");
         for(Book book : books){
             if(book.id.equals(referenceId) && book.isAvailable){
@@ -108,6 +107,30 @@ public class Library extends LibraryService {
     // This method is for return Book which is issued to student / seeker
     @Override
     public void returnBook(String referenceId) {
+        boolean isFound = false;
+        if(books.isEmpty()) System.out.println("Books not added yet!");
+        for(Book book : books){
+            if(book.id.equals(referenceId) && !book.isAvailable){
+                book.isAvailable = true;
+                isFound = true;
+            }
+            if(isFound) {
+                System.out.println("\nBook successfully returned by "+book.issuedToWhom);
+                book.issuedToWhom = "none";
+                System.out.println("---------------------------------------------------");
+                System.out.println("ID: "+book.id);
+                System.out.println("Title: "+book.title);
+                System.out.println("Author: "+book.author);
+                break;
+
+            }
+            else {
+                if(book.id.equals(referenceId) && !book.isAvailable){
+                    System.out.println("\nBook is already issued to "+book.issuedToWhom);
+                    break;
+                }
+            }
+        }
 
     }
 

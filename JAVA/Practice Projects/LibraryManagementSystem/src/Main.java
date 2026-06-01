@@ -23,6 +23,7 @@ public class Main {
       // variables
         int op;
         String holdId;
+        boolean isOk = false;
 
         // ------------------------------------------------------------------------------------
         do{
@@ -63,7 +64,7 @@ public class Main {
 
                 case 3:
                     space(40);
-                    boolean isOk = false;
+                    isOk = false;
                     System.out.println("----------------------------------- Issue Book ---");
                     System.out.print("Book ID: ");
                     holdId = in.next();
@@ -79,6 +80,24 @@ public class Main {
                     if(isOk) library.issueBook(holdId,issuedToWhom);
                     else System.out.println("----------------------------- Book ID Not Found ---");
                     break;
+
+                case 4:
+                    space(40);
+                    isOk = false;
+                    System.out.println("----------------------------------- Return Book ---");
+                    System.out.print("Book ID: ");
+                    holdId = in.next();
+                    for(Book b : library.books){
+                        if(b.id.equals(holdId)){
+                            isOk = true;
+                            break;
+                        }
+                    }
+                    if(isOk) library.returnBook(holdId);
+                    else System.out.println("----------------------------- Book ID Not Found ---");
+
+                    break;
+
 
 
                 case 5:
