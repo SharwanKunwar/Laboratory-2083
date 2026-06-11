@@ -22,7 +22,7 @@ public class Task extends TaskController{
     }
 
     public Task(String title, String description, int priority){
-        this.id = (int)Math.random()*100;
+        this.id = (int)Math.random()*100+1;
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -36,12 +36,14 @@ public class Task extends TaskController{
         String description;
 
 
+
         System.out.print("Task Title : ");
         title = in.nextLine();
         System.out.print("Task Description : ");
         description = in.nextLine();
         System.out.print("Task Priority [(1=low | 2=medium | 3=high)] : ");
         priority = in.nextInt();
+        in.nextLine();
         Task task = new Task(title,description,priority);
         tasksDB.add(task);
     }
@@ -54,6 +56,7 @@ public class Task extends TaskController{
     @Override
     void displayTask() {
         for(Task task : tasksDB){
+            System.out.println("ID : "+task.id);
             System.out.println("Title : "+task.title);
             System.out.println("Description : "+task.description);
             if(task.priority == 1){
