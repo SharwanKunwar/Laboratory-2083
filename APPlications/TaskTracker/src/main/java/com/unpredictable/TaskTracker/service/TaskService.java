@@ -33,7 +33,7 @@ public interface TaskService {
      * @param task Task object containing task details.
      * @return The saved task with generated ID.
      */
-    Task createTask(Task task);
+    Task addTask(Task task);
 
     /**
      * Find a task using its unique ID.

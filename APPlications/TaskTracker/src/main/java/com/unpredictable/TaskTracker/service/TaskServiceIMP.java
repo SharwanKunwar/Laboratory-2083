@@ -22,7 +22,7 @@ public class TaskServiceIMP implements TaskService {
     }
 
     @Override
-    public Task createTask(Task task) {
+    public Task addTask(Task task) {
         // Save a new task into the database
         return taskRepository.save(task);
     }

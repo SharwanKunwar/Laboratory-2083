@@ -1,6 +1,5 @@
 package com.unpredictable.TaskTracker.model;
 
-import jakarta.annotation.Priority;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
