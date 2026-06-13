@@ -12,25 +12,30 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskServiceIMP implements TaskService {
 
+    // used to perform database operation
     private final TaskRepository taskRepository;
 
     @Override
     public List<Task> getAllTasks() {
+        // fetch and return all tasks from the db
         return taskRepository.findAll();
     }
 
     @Override
     public Task createTask(Task task) {
+        // Save a new task into the database
         return taskRepository.save(task);
     }
 
     @Override
     public Task getTaskById(Long id) {
+        // Find task by id, throw exception if not found
         return taskRepository.findById(id).orElseThrow(()->new RuntimeException("Task not found"));
     }
 
     @Override
     public Task updateTask(Long id, Task task) {
+        // updates existing task
         return null;
     }
 
