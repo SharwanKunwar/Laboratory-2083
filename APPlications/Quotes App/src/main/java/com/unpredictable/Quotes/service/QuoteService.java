@@ -8,6 +8,6 @@ public interface QuoteService {
 
     Quote addQuote(Quote quote);
     List<Quote> getAllQuotes();
-    Quote getQuoteByAuthor(String author);
+    List<Quote> getQuoteByAuthor(String author);
 
 }

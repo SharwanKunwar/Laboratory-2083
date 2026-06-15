@@ -26,7 +26,7 @@ public class QuoteServiceIMP implements QuoteService {
     }
 
     @Override
-    public Quote getQuoteByAuthor(String author) {
+    public List<Quote> getQuoteByAuthor(String author) {
         return quoteRepository.findByAuthor(author);
     }
 }

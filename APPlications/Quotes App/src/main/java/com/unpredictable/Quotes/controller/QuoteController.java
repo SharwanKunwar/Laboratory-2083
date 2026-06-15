@@ -12,12 +12,13 @@ import java.util.List;
 @RequestMapping("/api/quotes")
 @CrossOrigin(origins = "*")
 public class QuoteController {
+
     private final QuoteService quoteService;
 
 
     // get quotes by author
     @GetMapping("/{author}")
-    public Quote getQuoteByAuthor(String author) {
+    public List<Quote> getQuoteByAuthor(@PathVariable String author) {
         return quoteService.getQuoteByAuthor(author);
     }
 
