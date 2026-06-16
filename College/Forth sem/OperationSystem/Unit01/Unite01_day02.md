@@ -2,6 +2,8 @@
 
 ## 1. Generation of Operating Systems
 
+![Os Timeline](/OperationSystem/assets/os_timeline.png)
+
 ### Third Generation (mid-1960s – mid-1970s)
 
 - **Technology**: Integrated Circuits (ICs) replaced individual transistors, making computers smaller, faster, cheaper, and more reliable.
@@ -55,3 +57,31 @@ Raw computer hardware is complex and inconvenient to program directly — it req
 In this view, the OS is a layer of software that turns difficult-to-use hardware into a convenient, pleasant-to-use machine.
 
 > **In short**: the *Resource Manager* view focuses on efficient hardware allocation, while the *Extended Machine* view focuses on user convenience and abstraction. A well-designed OS balances both.
+
+---
+
+## 3. Likely Exam Questions & Model Answers
+
+**Q1. What technological change defined the third generation of operating systems?**
+A: The shift from individual transistors to Integrated Circuits (ICs). This made computers smaller, cheaper, and more reliable, and enabled new OS capabilities like multiprogramming and time-sharing.
+
+**Q2. Differentiate between multiprogramming and multiprocessing.**
+A: Multiprogramming keeps several programs in memory and switches the CPU between them so it's never idle while one waits for I/O — but there is still only one CPU doing the actual execution at any instant. Multiprocessing uses two or more CPUs working together, so multiple instructions can genuinely execute at the same time.
+
+**Q3. What is spooling, and why was it important in third-generation systems?**
+A: Spooling buffers data for slow I/O devices (like printers) on disk instead of making the CPU wait directly on the device. This let computation and I/O overlap, improving overall efficiency.
+
+**Q4. What technology enabled the fourth generation of operating systems, and what did it lead to?**
+A: VLSI (Very Large Scale Integration) technology allowed enormous numbers of transistors on a single chip, producing the microprocessor. This made personal computers possible and, in turn, led to GUI-based, network, and distributed operating systems.
+
+**Q5. Differentiate between third and fourth generation operating systems.**
+A: Third-generation systems were built on ICs and centered on mainframes shared by many users via multiprogramming and time-sharing. Fourth-generation systems were built on VLSI/microprocessors, centered on personal computers with GUIs, and introduced networked and distributed computing.
+
+**Q6. Explain the two main objectives of an operating system.**
+A: As a *resource manager*, the OS allocates CPU, memory, I/O devices, and storage efficiently and fairly among competing processes. As an *extended machine*, the OS hides hardware complexity behind a simpler, more convenient interface (system calls, file systems) so users and programmers don't need to deal with raw hardware.
+
+**Q7. Why is the OS sometimes called a "virtual machine"?**
+A: Because it presents an abstraction that is easier and more convenient to program than the actual physical hardware — the user interacts with a "virtual," simplified machine rather than dealing with device registers and machine instructions directly.
+
+**Q8. Give one example each of a third-generation and a fourth-generation operating system.**
+A: Third generation — IBM OS/360 (or early UNIX). Fourth generation — MS-DOS, Windows, or Linux.
