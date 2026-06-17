@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="744aa6cf-7fcb-4d04-b9a3-2b0545d46225" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/entity/QuoteEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/repository/QuoteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/service/QuoteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/service/QuoteServiceHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/controller/QuoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/controller/QuoteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/repository/QuoteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/repository/QuoteRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/service/QuoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/service/QuoteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/service/QuoteServiceIMP.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../APPlications/Quotes App/src/main/java/com/unpredictable/Quotes/service/QuoteServiceIMP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/controller/QuoteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/Quote01Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/unpredictableXCode/Quote01/Quote01Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,61 +28,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000005182048" />
-      <entry key="S5" value="1.0016544538963057" />
-      <entry key="S10" value="1.1607903839737181" />
-      <entry key="S30" value="4.788028171677684" />
-      <entry key="S60" value="9.46284511686391" />
-      <entry key="M2" value="13.861858942911075" />
-      <entry key="M5" value="21.13818134677826" />
-      <entry key="M10" value="31.048798593683326" />
-      <entry key="M15" value="37.62757087680802" />
-      <entry key="M30" value="47.37547802169712" />
-      <entry key="H1" value="53.9394074484683" />
-      <entry key="H2" value="57.76172594295105" />
-      <entry key="H4" value="59.82599552121897" />
-      <entry key="D1" value="61.629788351082084" />
-      <entry key="W1" value="61.946916256016245" />
+      <entry key="MS100" value="1.6425243425374662E-29" />
+      <entry key="MS500" value="1.7502591749408053E-6" />
+      <entry key="S2" value="0.03637270424794404" />
+      <entry key="S5" value="0.2657728348527129" />
+      <entry key="S10" value="0.534001131691964" />
+      <entry key="S30" value="1.3489688350840068" />
+      <entry key="S60" value="2.176618653167858" />
+      <entry key="M2" value="3.0761347204403062" />
+      <entry key="M5" value="7.996702536281295" />
+      <entry key="M10" value="19.80552476714735" />
+      <entry key="M15" value="29.82806032119429" />
+      <entry key="M30" value="47.68773261237273" />
+      <entry key="H1" value="61.68651871915088" />
+      <entry key="H2" value="70.55584254138576" />
+      <entry key="H4" value="75.56302408484355" />
+      <entry key="D1" value="80.06231580227416" />
+      <entry key="W1" value="80.8652502802594" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.004016069635375259" />
-      <entry key="MS500" value="0.33171128514929044" />
-      <entry key="S2" value="0.758909627564967" />
-      <entry key="S5" value="0.895809227856359" />
-      <entry key="S10" value="0.9699589288380374" />
-      <entry key="S30" value="1.545081628054157" />
-      <entry key="S60" value="2.2836195257109733" />
-      <entry key="M2" value="3.053684608590447" />
-      <entry key="M5" value="4.772075513855346" />
-      <entry key="M10" value="7.229544727317049" />
-      <entry key="M15" value="8.865425286249817" />
-      <entry key="M30" value="11.304140530120565" />
-      <entry key="H1" value="12.95745002234167" />
-      <entry key="H2" value="13.924362972110428" />
-      <entry key="H4" value="14.447801592692562" />
-      <entry key="D1" value="14.90589884813127" />
-      <entry key="W1" value="14.986505379789607" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000894850932898" />
+      <entry key="S2" value="1.1022310947418315" />
+      <entry key="S5" value="1.5540488106011554" />
+      <entry key="S10" value="2.178938874519745" />
+      <entry key="S30" value="3.1517323196744615" />
+      <entry key="S60" value="3.5777841777831383" />
+      <entry key="M2" value="4.128539287909838" />
+      <entry key="M5" value="7.5113528120226745" />
+      <entry key="M10" value="13.667541261442928" />
+      <entry key="M15" value="18.069430987929554" />
+      <entry key="M30" value="25.116760939706005" />
+      <entry key="H1" value="30.248677274197693" />
+      <entry key="H2" value="33.38741740301059" />
+      <entry key="H4" value="35.1294390802846" />
+      <entry key="D1" value="36.67884652730355" />
+      <entry key="W1" value="36.9538845173524" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.12158282210085208" />
-      <entry key="MS500" value="0.7186056272959804" />
-      <entry key="S2" value="1.4000019330937858" />
-      <entry key="S5" value="1.7182724025148992" />
-      <entry key="S10" value="2.024024952390501" />
-      <entry key="S30" value="6.224391335830111" />
-      <entry key="S60" value="11.645032030919182" />
-      <entry key="M2" value="16.84093054491789" />
-      <entry key="M5" value="25.859871390723665" />
-      <entry key="M10" value="38.23859490745334" />
-      <entry key="M15" value="46.46011807866749" />
-      <entry key="M30" value="58.658474157919485" />
-      <entry key="H1" value="66.88470408562816" />
-      <entry key="H2" value="71.6795520437416" />
-      <entry key="H4" value="74.270404426071" />
-      <entry key="D1" value="76.53510365553636" />
-      <entry key="W1" value="76.93333781792475" />
+      <entry key="MS100" value="5.822216831056818E-6" />
+      <entry key="MS500" value="0.08975512133065607" />
+      <entry key="S2" value="0.6126679901191247" />
+      <entry key="S5" value="1.3595504815895827" />
+      <entry key="S10" value="2.297849369986978" />
+      <entry key="S30" value="4.2384197844109375" />
+      <entry key="S60" value="5.581206822303079" />
+      <entry key="M2" value="7.089480141413622" />
+      <entry key="M5" value="15.421712789647339" />
+      <entry key="M10" value="33.39777496481203" />
+      <entry key="M15" value="47.83202701667232" />
+      <entry key="M30" value="72.75943902048765" />
+      <entry key="H1" value="91.90814799684095" />
+      <entry key="H2" value="103.92834789316267" />
+      <entry key="H4" value="110.68462117916357" />
+      <entry key="D1" value="116.73979804870784" />
+      <entry key="W1" value="117.81893844679689" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -103,26 +94,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/sharwan/2083 Data/BackendPracticeApplications/Quote01&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Quote01Application.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/sharwan/2083 Data/BackendPracticeApplications/Quote01",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
