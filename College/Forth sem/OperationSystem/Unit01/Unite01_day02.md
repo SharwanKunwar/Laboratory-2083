@@ -2,7 +2,7 @@
 
 ## 1. Generation of Operating Systems
 
-![OS Timeline](./Forth%20sem/OperationSystem/assets/os_timeline.png)
+![OS Timeline](assets/os_timeline.png)
 
 ### Third Generation (mid-1960s – mid-1970s)
 
