@@ -89,7 +89,7 @@ A: Third generation — IBM OS/360 (or early UNIX). Fourth generation — MS-DOS
 
 ## 4. Types of Operating Systems
 
-![os](.//OperationSystem/assets/types_of_operating_systems.png)
+![os](../assets/types_of_operating_systems.png)
 
 ### Batch Operating System
 
