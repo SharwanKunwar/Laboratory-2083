@@ -21,7 +21,7 @@
 - A **systematic, organized, and disciplined approach** is needed to manage cost, quality, and risk.
 
 ### The Generic Process Activities
-![Software engineering process activities: Specification, Development, Validation, Evolution](./assets/se_process_activities.svg)
+![Software engineering process activities: Specification, Development, Validation, Evolution](../assets/se_process_activities.svg)
 
 ---
 
@@ -40,7 +40,7 @@
 
 > 📌 **Key takeaway:** For systems used over many years, the bulk of total cost is usually spent *after* the system is delivered, not before.
 
-![Chart showing development cost dropping sharply after release while maintenance cost climbs over subsequent years](./assets/se_cost_trend.png)
+![Chart showing development cost dropping sharply after release while maintenance cost climbs over subsequent years](../assets/se_cost_trend.png)
 *(Illustrative trend — actual proportions vary by project type and process model.)*
 
 ### Why Cost Estimation Is Hard
@@ -60,7 +60,7 @@
 | **Security & Trust Challenge** | Since software underpins nearly every part of modern life, it must be secure, reliable, and resistant to malicious attack. |
 | **Scale Challenge** | Software must be engineered effectively across a huge range — from small embedded systems to massive enterprise-scale systems. |
 
-![Diagram of the four key software engineering challenges: heterogeneity, business and social change, security and trust, and scale](./assets/se_key_challenges.svg)
+![Diagram of the four key software engineering challenges: heterogeneity, business and social change, security and trust, and scale](../assets/se_key_challenges.svg)
 
 ---
 

@@ -1,0 +1,31 @@
+<svg width="680" height="340" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <rect x="20" y="20" width="640" height="280" rx="12" fill="#FAFAFA" stroke="#9C9B97" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="40" y="46" font-size="13" font-weight="bold" fill="#5F5E5A" letter-spacing="1">SOFTWARE ENGINEERING</text>
+
+  <rect x="40" y="80" width="200" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="1"/>
+  <text x="140" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#4A1B0C">Requirements &amp; Design</text>
+  <text x="140" y="118" text-anchor="middle" font-size="11" fill="#712B13">What &amp; how to build</text>
+
+  <rect x="440" y="80" width="200" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+  <text x="540" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#412402">Testing &amp; QA</text>
+  <text x="540" y="118" text-anchor="middle" font-size="11" fill="#633806">Verify it works</text>
+
+  <rect x="40" y="220" width="200" height="56" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <text x="140" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#26215C">Project Management</text>
+  <text x="140" y="258" text-anchor="middle" font-size="11" fill="#3C3489">Plan, track, lead</text>
+
+  <rect x="440" y="220" width="200" height="56" rx="8" fill="#E3F3E3" stroke="#1F7A3D" stroke-width="1"/>
+  <text x="540" y="240" text-anchor="middle" font-size="13" font-weight="bold" fill="#0D3A1D">Maintenance &amp; Evolution</text>
+  <text x="540" y="258" text-anchor="middle" font-size="11" fill="#15532B">Keep it alive &amp; improving</text>
+
+  <rect x="260" y="148" width="160" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+  <text x="340" y="168" text-anchor="middle" font-size="14" font-weight="bold" fill="#04342C">Programming</text>
+  <text x="340" y="186" text-anchor="middle" font-size="12" fill="#085041">Write &amp; test code</text>
+
+  <line x1="240" y1="136" x2="260" y2="148" stroke="#9C9B97" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="440" y1="136" x2="420" y2="148" stroke="#9C9B97" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="240" y1="220" x2="260" y2="204" stroke="#9C9B97" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="440" y1="220" x2="420" y2="204" stroke="#9C9B97" stroke-width="1.2" stroke-dasharray="3,3"/>
+
+  <text x="340" y="320" text-anchor="middle" font-size="12" fill="#5F5E5A">Programming is one core activity inside the larger discipline of Software Engineering</text>
+</svg>
