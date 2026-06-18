@@ -1,0 +1,92 @@
+<svg viewBox="0 0 880 700" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="880" height="700" fill="#ffffff"/>
+
+  <text x="440" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Spring Boot Layered Architecture</text>
+  <text x="440" y="58" text-anchor="middle" font-size="13" fill="#64748b">Request flows down, response flows back up</text>
+
+  <!-- Exception handler dashed boundary -->
+  <rect x="255" y="95" width="370" height="470" rx="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,5"/>
+  <text x="440" y="84" text-anchor="middle" font-size="12.5" font-weight="600" fill="#b45309">Wrapped by @ControllerAdvice (Global Exception Handler)</text>
+
+  <!-- Client -->
+  <rect x="290" y="105" width="300" height="64" rx="10" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+  <text x="440" y="131" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0f172a">Client / Browser</text>
+  <text x="440" y="150" text-anchor="middle" font-size="11.5" fill="#475569">HTTP request (JSON)</text>
+
+  <!-- Arrow down 1 -->
+  <line x1="440" y1="169" x2="440" y2="200" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="424" y1="200" x2="424" y2="169" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Controller -->
+  <rect x="290" y="201" width="300" height="64" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="440" y="227" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1e3a8a">Controller Layer</text>
+  <text x="440" y="246" text-anchor="middle" font-size="11.5" fill="#1e40af">Routing, validation (@Valid), HTTP status</text>
+
+  <!-- DTO side note -->
+  <rect x="650" y="190" width="190" height="76" rx="10" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="745" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">DTOs cross here</text>
+  <text x="745" y="230" text-anchor="middle" font-size="10.5" fill="#5b21b6">QuoteRequest in</text>
+  <text x="745" y="245" text-anchor="middle" font-size="10.5" fill="#5b21b6">QuoteResponse out</text>
+  <text x="745" y="260" text-anchor="middle" font-size="10.5" fill="#5b21b6">Entities never exposed</text>
+  <line x1="650" y1="233" x2="590" y2="233" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Arrow down 2 -->
+  <line x1="440" y1="265" x2="440" y2="296" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="424" y1="296" x2="424" y2="265" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Service -->
+  <rect x="290" y="297" width="300" height="64" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="440" y="323" text-anchor="middle" font-size="15.5" font-weight="700" fill="#14532d">Service Layer</text>
+  <text x="440" y="342" text-anchor="middle" font-size="11.5" fill="#166534">Business logic, orchestration, mapping</text>
+
+  <!-- Arrow down 3 -->
+  <line x1="440" y1="361" x2="440" y2="392" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="424" y1="392" x2="424" y2="361" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Repository -->
+  <rect x="290" y="393" width="300" height="64" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <text x="440" y="419" text-anchor="middle" font-size="15.5" font-weight="700" fill="#831843">Repository Layer</text>
+  <text x="440" y="438" text-anchor="middle" font-size="11.5" fill="#9d174d">Spring Data JPA, save / findAll / findById</text>
+
+  <!-- Entity side note -->
+  <rect x="650" y="382" width="190" height="76" rx="10" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="745" y="404" text-anchor="middle" font-size="13" font-weight="700" fill="#9a3412">Entity lives here</text>
+  <text x="745" y="422" text-anchor="middle" font-size="10.5" fill="#9a3412">Quote entity maps</text>
+  <text x="745" y="437" text-anchor="middle" font-size="10.5" fill="#9a3412">directly to a table</text>
+  <text x="745" y="452" text-anchor="middle" font-size="10.5" fill="#9a3412">@Entity annotated</text>
+  <line x1="650" y1="425" x2="590" y2="425" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <!-- Arrow down 4 -->
+  <line x1="440" y1="457" x2="440" y2="488" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="424" y1="488" x2="424" y2="457" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowUp)"/>
+
+  <!-- Database -->
+  <rect x="290" y="489" width="300" height="64" rx="10" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+  <text x="440" y="515" text-anchor="middle" font-size="15.5" font-weight="700" fill="#f1f5f9">PostgreSQL Database</text>
+  <text x="440" y="534" text-anchor="middle" font-size="11.5" fill="#cbd5e1">Persistent storage</text>
+
+  <!-- Config / util side annotation -->
+  <rect x="40" y="190" width="190" height="270" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="135" y="214" text-anchor="middle" font-size="12.5" font-weight="700" fill="#334155">Supporting packages</text>
+  <text x="60" y="240" font-size="11" fill="#334155">• config/ — beans, Swagger,</text>
+  <text x="70" y="255" font-size="11" fill="#334155">  datasource setup</text>
+  <text x="60" y="278" font-size="11" fill="#334155">• exception/ — custom</text>
+  <text x="70" y="293" font-size="11" fill="#334155">  exceptions + handler</text>
+  <text x="60" y="316" font-size="11" fill="#334155">• util/ — shared helpers</text>
+  <text x="60" y="346" font-size="11" fill="#334155">Used by every layer, but</text>
+  <text x="60" y="362" font-size="11" fill="#334155">not part of the main</text>
+  <text x="60" y="378" font-size="11" fill="#334155">request flow itself.</text>
+
+  <!-- Legend -->
+  <text x="440" y="600" text-anchor="middle" font-size="12" fill="#475569">↓ request travels down · ↑ response travels back up</text>
+  <text x="440" y="622" text-anchor="middle" font-size="11.5" fill="#64748b">Keep controllers thin — business logic belongs in the Service layer only.</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+    <marker id="arrowUp" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,75 @@
+<svg viewBox="0 0 1040 560" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1040" height="560" fill="#ffffff"/>
+  <text x="520" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Request Lifecycle — POST /quotes</text>
+
+  <!-- Lifeline headers -->
+  <g>
+    <rect x="50" y="45" width="140" height="40" rx="8" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+    <text x="120" y="69" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Client</text>
+
+    <rect x="270" y="45" width="140" height="40" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+    <text x="340" y="69" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">Controller</text>
+
+    <rect x="490" y="45" width="140" height="40" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="560" y="69" text-anchor="middle" font-size="13" font-weight="700" fill="#14532d">Service</text>
+
+    <rect x="710" y="45" width="140" height="40" rx="8" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+    <text x="780" y="69" text-anchor="middle" font-size="13" font-weight="700" fill="#831843">Repository</text>
+
+    <rect x="930" y="45" width="100" height="40" rx="8" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="980" y="69" text-anchor="middle" font-size="12.5" font-weight="700" fill="#f1f5f9">Database</text>
+  </g>
+
+  <!-- Lifelines -->
+  <line x1="120" y1="85" x2="120" y2="510" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="340" y1="85" x2="340" y2="510" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="560" y1="85" x2="560" y2="510" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="780" y1="85" x2="780" y2="510" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="980" y1="85" x2="980" y2="510" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Step 1: Client -> Controller -->
+  <line x1="120" y1="115" x2="334" y2="115" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arrowFwd)"/>
+  <text x="122" y="108" font-size="11.5" fill="#0f172a">1. POST /quotes — QuoteRequest (JSON)</text>
+
+  <!-- Step 2: Controller -> Service -->
+  <line x1="340" y1="160" x2="554" y2="160" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arrowFwd)"/>
+  <text x="342" y="153" font-size="11.5" fill="#0f172a">2. validated DTO → service.createQuote()</text>
+
+  <!-- Step 3: Service -> Repository -->
+  <line x1="560" y1="205" x2="774" y2="205" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arrowFwd)"/>
+  <text x="562" y="198" font-size="11.5" fill="#0f172a">3. map DTO → Quote entity, repository.save()</text>
+
+  <!-- Step 4: Repository -> Database -->
+  <line x1="780" y1="250" x2="974" y2="250" stroke="#0f172a" stroke-width="1.8" marker-end="url(#arrowFwd)"/>
+  <text x="782" y="243" font-size="11.5" fill="#0f172a">4. INSERT INTO quotes (...)</text>
+
+  <!-- Step 5: Database -> Repository (return) -->
+  <line x1="980" y1="300" x2="786" y2="300" stroke="#64748b" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBack)"/>
+  <text x="782" y="293" font-size="11.5" fill="#475569" text-anchor="end">5. row persisted, id generated</text>
+
+  <!-- Step 6: Repository -> Service (return) -->
+  <line x1="780" y1="345" x2="566" y2="345" stroke="#64748b" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBack)"/>
+  <text x="562" y="338" font-size="11.5" fill="#475569" text-anchor="end">6. saved Quote entity returned</text>
+
+  <!-- Step 7: Service -> Controller (return) -->
+  <line x1="560" y1="390" x2="346" y2="390" stroke="#64748b" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBack)"/>
+  <text x="342" y="383" font-size="11.5" fill="#475569" text-anchor="end">7. mapped to QuoteResponse DTO</text>
+
+  <!-- Step 8: Controller -> Client (return) -->
+  <line x1="340" y1="435" x2="126" y2="435" stroke="#64748b" stroke-width="1.8" stroke-dasharray="6,4" marker-end="url(#arrowBack)"/>
+  <text x="14" y="428" font-size="11.5" fill="#475569" text-anchor="start">8. 201 Created — QuoteResponse JSON</text>
+
+  <!-- Error path note -->
+  <rect x="60" y="460" width="920" height="56" rx="8" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="520" y="481" text-anchor="middle" font-size="11.5" fill="#9a3412">If validation or persistence fails at any step, the exception bubbles up to @ControllerAdvice,</text>
+  <text x="520" y="500" text-anchor="middle" font-size="11.5" fill="#9a3412">which returns a clean error response (404 / 400 / 500) instead of a raw stack trace.</text>
+
+  <defs>
+    <marker id="arrowFwd" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#0f172a"/>
+    </marker>
+    <marker id="arrowBack" markerWidth="9" markerHeight="9" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>
