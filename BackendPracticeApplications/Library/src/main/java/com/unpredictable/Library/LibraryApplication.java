@@ -10,7 +10,12 @@ public class LibraryApplication {
 
 		//Env loaded
 		Dotenv dotenv = Dotenv.configure().load();
-		dotenv.entries().forEach((entry) -> System.setProperty(entry.getKey(), entry.getValue()));
+
+		System.setProperty("DB_URL", dotenv.get("DB_URL"));
+		System.setProperty("DB_USERNAME", dotenv.get("DB_USERNAME"));
+		System.setProperty("DB_PASSWORD", dotenv.get("DB_PASSWORD"));
+
+
 		SpringApplication.run(LibraryApplication.class, args);
 	}
 
