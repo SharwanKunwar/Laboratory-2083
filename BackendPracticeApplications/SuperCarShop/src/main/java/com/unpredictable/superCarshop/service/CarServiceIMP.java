@@ -18,6 +18,17 @@ public class CarServiceIMP implements CarServiceHandler{
 
 
 
+    //Request to Entity
+    private CarEntity mapToEntity(CarRequest carRequest) {
+        CarEntity car = new  CarEntity();
+        car.setName(carRequest.getName());
+        car.setModal(carRequest.getModal());
+        car.setColor(carRequest.getColor());
+        car.setPrice(carRequest.getPrice());
+        car.setEngine(carRequest.getEngine());
+        return car;
+    }
+
     //Entity to Response
     private CarResponse mapToCarResponse(CarEntity carEntity) {
         return CarResponse.builder()
@@ -28,17 +39,6 @@ public class CarServiceIMP implements CarServiceHandler{
                 .price(carEntity.getPrice())
                 .engine(carEntity.getEngine())
                 .build();
-    }
-
-    //Request to Entity
-    private CarEntity mapToEntity(CarRequest carRequest) {
-        CarEntity car = new  CarEntity();
-        car.setName(carRequest.getName());
-        car.setModal(carRequest.getModal());
-        car.setColor(carRequest.getColor());
-        car.setPrice(carRequest.getPrice());
-        car.setEngine(carRequest.getEngine());
-        return car;
     }
 
     @Override
