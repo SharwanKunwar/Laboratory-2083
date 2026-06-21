@@ -1,8 +1,8 @@
-package com.unpredictable.Library.entity;
-
+package com.unpredictable.BookShop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -11,16 +11,16 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Books")
-public class Book {
+@Table(name = "Book_shop")
+public class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(nullable = false, length = 1000)
+    @Column(nullable = false, length = 300)
     private String description;
 
     @Column(nullable = false, length = 100)
@@ -28,7 +28,4 @@ public class Book {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-
-
-
 }

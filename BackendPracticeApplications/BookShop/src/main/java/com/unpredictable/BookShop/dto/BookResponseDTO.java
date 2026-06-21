@@ -1,13 +1,14 @@
-package com.unpredictable.Library.dto;
+package com.unpredictable.BookShop.dto;
 
 import lombok.*;
+
 import java.math.BigDecimal;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class BookResponseDTO {
     private Long id;
     private String title;
