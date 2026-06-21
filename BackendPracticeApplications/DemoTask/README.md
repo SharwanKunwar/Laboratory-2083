@@ -5,18 +5,6 @@
 
 #### A Backend Project Report Submitted in Partial Fulfillment of the Requirements for the Degree of Bachelor in Computer Application / Computer Science
 
----
-
-**Submitted by:** [Your Name]
-**Roll No / Symbol No:** [Your Roll Number]
-**Program:** [BCA / BSc.CSIT]
-**Semester:** Second Semester
-
-**Submitted to:**
-[Department of Computer Science / College Name]
-[University Name]
-
-**Submission Date:** June 2026
 
 </div>
 
