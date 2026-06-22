@@ -9,7 +9,6 @@ import com.unpredictable.DemoTask.mapper.DemoTaskMapper;
 import com.unpredictable.DemoTask.repository.DemoTaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
