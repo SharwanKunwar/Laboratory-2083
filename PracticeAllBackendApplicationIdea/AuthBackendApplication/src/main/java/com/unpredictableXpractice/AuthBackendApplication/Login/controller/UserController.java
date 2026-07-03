@@ -3,7 +3,6 @@ package com.unpredictableXpractice.AuthBackendApplication.Login.controller;
 import com.unpredictableXpractice.AuthBackendApplication.Login.dtos.UserDTO;
 import com.unpredictableXpractice.AuthBackendApplication.Login.service.UserServiceHelper;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserServiceHelper userServiceHelper;
-    private final ModelMapper modelMapper;
+
 
     // post user
     @PostMapping

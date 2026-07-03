@@ -1,7 +1,6 @@
-package com.unpredictableXpractice.AuthBackendApplication.Login.exception;
+package com.unpredictableXpractice.QuoteBackend.exceptions;
 
 public class BadRequestException extends RuntimeException {
-
     public BadRequestException(String message) {
         super(message);
     }

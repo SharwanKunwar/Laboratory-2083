@@ -4,8 +4,8 @@ import com.unpredictableXpractice.AuthBackendApplication.Login.dtos.UserDTO;
 import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.Provider;
 import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.User;
 import com.unpredictableXpractice.AuthBackendApplication.Login.repository.UserRepository;
-import com.unpredictableXpractice.AuthBackendApplication.Login.exception.UserAlreadyExistsException;
-import com.unpredictableXpractice.AuthBackendApplication.Login.exception.BadRequestException;
+import com.unpredictableXpractice.AuthBackendApplication.exception.UserAlreadyExistsException;
+import com.unpredictableXpractice.AuthBackendApplication.exception.BadRequestException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,8 @@ public class UserServiceIMP implements UserServiceHelper {
     private final ModelMapper modelMapper;
 
     @Override
-    public UserDTO createUser(UserDTO userDTO) {
+    public UserDTO createUser(UserDTO userDTO)
+    {
 
         if (userDTO.getEmail() == null || userDTO.getEmail().isBlank()) {
             throw new BadRequestException("Email is required");

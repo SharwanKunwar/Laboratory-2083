@@ -1,4 +1,4 @@
-package com.unpredictableXpractice.AuthBackendApplication.Login.exception;
+package com.unpredictableXpractice.AuthBackendApplication.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 

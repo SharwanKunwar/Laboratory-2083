@@ -1,4 +1,4 @@
-package com.unpredictableXpractice.AuthBackendApplication.Login.exception;
+package com.unpredictableXpractice.AuthBackendApplication.exception;
 
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
