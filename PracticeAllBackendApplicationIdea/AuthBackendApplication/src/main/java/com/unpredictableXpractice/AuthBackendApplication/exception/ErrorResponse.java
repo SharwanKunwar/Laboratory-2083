@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ErrorResponse {
 
-    private LocalDateTime timestamp;
+    private String path;
     private int status;
     private String error;
-    private String path;
     private String message;
+    private LocalDateTime timestamp;
 }
