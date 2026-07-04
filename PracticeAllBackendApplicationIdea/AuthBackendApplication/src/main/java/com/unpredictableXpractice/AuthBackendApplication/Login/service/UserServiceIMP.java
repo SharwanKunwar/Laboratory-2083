@@ -4,10 +4,13 @@ import com.unpredictableXpractice.AuthBackendApplication.Login.dtos.UserDTO;
 import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.Provider;
 import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.User;
 import com.unpredictableXpractice.AuthBackendApplication.Login.repository.UserRepository;
+import com.unpredictableXpractice.AuthBackendApplication.exception.ResourceNotFoundException;
 import com.unpredictableXpractice.AuthBackendApplication.exception.UserAlreadyExistsException;
 import com.unpredictableXpractice.AuthBackendApplication.exception.BadRequestException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.internal.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +21,7 @@ public class UserServiceIMP implements UserServiceHelper {
     private final ModelMapper modelMapper;
 
     @Override
+    @Transactional
     public UserDTO createUser(UserDTO userDTO)
     {
 
@@ -43,8 +47,12 @@ public class UserServiceIMP implements UserServiceHelper {
     }
 
     @Override
-    public UserDTO getUserByEmail(String email) {
-        return null;
+    public UserDTO getUserByEmail(String email)
+    {
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException("User not found with email: " + email));
+        User savedUser = modelMapper.map(user, User.class);
+
+        return modelMapper.map(savedUser, UserDTO.class);
     }
 
     @Override
@@ -65,6 +73,7 @@ public class UserServiceIMP implements UserServiceHelper {
 
 
     @Override
+    @Transactional
     public Iterable<UserDTO> getAllUsers() {
 
         return userRepository
