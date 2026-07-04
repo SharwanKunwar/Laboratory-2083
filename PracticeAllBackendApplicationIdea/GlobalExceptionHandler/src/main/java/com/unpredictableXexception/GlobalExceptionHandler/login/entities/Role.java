@@ -1,0 +1,22 @@
+package com.unpredictableXexception.GlobalExceptionHandler.login.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.*;
+
+import java.util.UUID;
+
+@Entity
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "roles")
+public class Role
+{
+    @Id
+    private UUID id = UUID.randomUUID();
+    private String name;
+}
