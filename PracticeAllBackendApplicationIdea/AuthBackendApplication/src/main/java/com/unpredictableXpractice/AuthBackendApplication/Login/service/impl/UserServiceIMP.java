@@ -1,17 +1,17 @@
-package com.unpredictableXpractice.AuthBackendApplication.Login.service;
+package com.unpredictableXpractice.AuthBackendApplication.Login.service.impl;
 
 import com.unpredictableXpractice.AuthBackendApplication.Login.dtos.UserDTO;
 import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.Provider;
 import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.User;
 import com.unpredictableXpractice.AuthBackendApplication.Login.helper.UserHelper;
 import com.unpredictableXpractice.AuthBackendApplication.Login.repository.UserRepository;
+import com.unpredictableXpractice.AuthBackendApplication.Login.service.UserServiceHelper;
 import com.unpredictableXpractice.AuthBackendApplication.exception.ResourceNotFoundException;
 import com.unpredictableXpractice.AuthBackendApplication.exception.UserAlreadyExistsException;
 import com.unpredictableXpractice.AuthBackendApplication.exception.BadRequestException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.internal.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -63,10 +63,9 @@ public class UserServiceIMP implements UserServiceHelper {
         User existingUser = userRepository.findById(uId).orElseThrow(()-> new ResourceNotFoundException("User not found with id: " + uId));
         // email must not be changed
         if(userDTO.getName() != null) existingUser.setName(userDTO.getName());
-        if(userDTO.getEmail() != null) existingUser.setEmail(userDTO.getEmail());
+        //todo: change password update login... hashing
         if(userDTO.getPassword() != null) existingUser.setPassword(userDTO.getPassword());
         if(userDTO.getProvider() != null) existingUser.setProvider(userDTO.getProvider());
-        //todo: change password update login... hashing
         if(userDTO.getImage() != null) existingUser.setImage(userDTO.getImage());
         existingUser.setEnable(userDTO.isEnable());
         User user = userRepository.save(existingUser);
