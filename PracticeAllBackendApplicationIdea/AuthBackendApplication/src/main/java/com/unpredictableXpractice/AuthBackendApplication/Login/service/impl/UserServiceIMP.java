@@ -87,7 +87,6 @@ public class UserServiceIMP implements UserServiceHelper {
     }
 
 
-
     @Override
     @Transactional
     public Iterable<UserDTO> getAllUsers() {

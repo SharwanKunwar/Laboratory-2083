@@ -1,0 +1,7 @@
+package com.unpredictable.practice.DeathNoteBackend.exceptions;
+
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}

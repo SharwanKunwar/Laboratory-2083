@@ -10,8 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler {
-
+public class GlobalExceptionHandler
+{
     //User Already Exists Exception
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(UserAlreadyExistsException ex, HttpServletRequest request) {
@@ -69,4 +69,5 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
+
 }
