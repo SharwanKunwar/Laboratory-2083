@@ -1,7 +1,6 @@
 package com.unpredictableXpractice.AuthBackendApplication.Login.security;
 
 
-import com.unpredictableXpractice.AuthBackendApplication.Login.enitites.User;
 import com.unpredictableXpractice.AuthBackendApplication.Login.repository.UserRepository;
 import com.unpredictableXpractice.AuthBackendApplication.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
