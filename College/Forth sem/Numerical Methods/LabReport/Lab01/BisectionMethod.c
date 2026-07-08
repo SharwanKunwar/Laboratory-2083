@@ -31,6 +31,7 @@ int main()
     }
 
     c = (a + b) / 2.0;
+
     printf("\nRoot ≈ %.4f\n", c);
 
     return 0;
