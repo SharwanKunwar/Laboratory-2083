@@ -32,3 +32,14 @@ spring:
 logging:
   level:
     org.springframework.security: DEBUG
+
+security:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: AuthBackendApplication
+    access-ttl-seconds: 900         # 15 minutes
+    refresh-ttl-seconds: 604800     # 7 days
+    refresh-token-cookie-name: refresh_token
+    cookie-secure: true            # true in production (HTTPS)
+    cookie-http-only: true
+    cookie-same-site: Lax
