@@ -1,47 +1,63 @@
 package com.unpredictableXpractice.AuthBackendApplication.Login.security;
 
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.Map;
 
 @Configuration
-public class SecurityConfig
-{
+@RequiredArgsConstructor
+public class SecurityConfig {
 
-    /*
-    @Bean
-    public UserDetailsService users()
-    {
-       User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
-       UserDetails user01 = userBuilder.username("sharwan").password("xyz").roles("USER").build();
-       return new InMemoryUserDetailsManager(user01);
-    }
-     */
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/api/v1/auth/register").permitAll()
-                                .requestMatchers("/api/v1/auth/login").permitAll()
-                                .anyRequest().authenticated()
-                ).httpBasic(Customizer.withDefaults());
+                .cors(Customizer.withDefaults())
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/api/v1/auth/register",
+                                "/api/v1/auth/login"
+                        ).permitAll()
+                        .anyRequest().authenticated()
+                )
+                .exceptionHandling(ex -> ex.authenticationEntryPoint((request, response, authException) -> {
+
+                    response.setStatus(401);
+                    response.setContentType("application/json");
+
+                    Map<String, Object> error = Map.of(
+                            "status", 401,
+                            "error", "Unauthorized",
+                            "message", authException.getMessage(),
+                            "path", request.getRequestURI()
+                    );
+
+                    new ObjectMapper().writeValue(response.getWriter(), error);
+
+                }))
+                .addFilterBefore(jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder()
-    {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
 }

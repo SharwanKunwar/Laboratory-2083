@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/auth_application
+    url: jdbc:postgresql://localhost:5432/auth
     username: postgres
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -35,7 +35,7 @@ logging:
 
 security:
   jwt:
-    secret: ${JWT_SECRET}
+    secret: 7WwP5U5yV5zQvV0GqPzv4jL6x2QJ9w7H8L9dE5bF2sA9LmNxQeRtYuIoPaSdFgHjKlZxCvBnM
     issuer: AuthBackendApplication
     access-ttl-seconds: 900         # 15 minutes
     refresh-ttl-seconds: 604800     # 7 days
