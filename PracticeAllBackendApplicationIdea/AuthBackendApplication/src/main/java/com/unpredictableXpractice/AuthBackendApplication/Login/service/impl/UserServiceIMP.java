@@ -58,7 +58,8 @@ public class UserServiceIMP implements UserServiceHelper {
     }
 
     @Override
-    public UserDTO updateUser(UserDTO userDTO, String userId) {
+    public UserDTO updateUser(UserDTO userDTO, String userId)
+    {
         UUID uId = UUID.fromString(userId);
         User existingUser = userRepository.findById(uId).orElseThrow(()-> new ResourceNotFoundException("User not found with id: " + uId));
         // email must not be changed
