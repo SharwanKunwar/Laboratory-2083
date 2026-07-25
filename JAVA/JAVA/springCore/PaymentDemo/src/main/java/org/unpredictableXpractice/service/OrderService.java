@@ -2,16 +2,11 @@ package org.unpredictableXpractice.service;
 
 import org.unpredictableXpractice.payment.PaymentServiceHelper;
 
-public class OrderService {
-    PaymentServiceHelper paymentService;
+public class OrderService
+{
+    public void placeOrder(String item){
+        System.out.println("Order placing ...");
+        System.out.println("Your order placed with item name: "+item);
 
-    public OrderService(PaymentServiceHelper paymentService) {
-        this.paymentService = paymentService;
-    }
-
-    public void pay(){
-        System.out.println("Payment service started");
-        System.out.println("Payed by '"+paymentService.pay()+"'");
-        System.out.println("Payment service finished");
     }
 }
