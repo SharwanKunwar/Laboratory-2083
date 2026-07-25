@@ -2,10 +2,10 @@ package org.unpredictableXpractice.service;
 
 import org.unpredictableXpractice.payment.PaymentServiceHelper;
 
-public class PaymentService {
+public class OrderService {
     PaymentServiceHelper paymentService;
 
-    public PaymentService(PaymentServiceHelper paymentService) {
+    public OrderService(PaymentServiceHelper paymentService) {
         this.paymentService = paymentService;
     }
 

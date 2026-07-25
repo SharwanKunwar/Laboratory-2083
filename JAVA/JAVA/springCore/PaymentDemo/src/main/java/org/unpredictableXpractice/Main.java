@@ -1,16 +1,15 @@
 package org.unpredictableXpractice;
 
-import org.unpredictableXpractice.payment.Eswa;
 import org.unpredictableXpractice.payment.PaymentServiceHelper;
 import org.unpredictableXpractice.payment.Stripe;
-import org.unpredictableXpractice.service.PaymentService;
+import org.unpredictableXpractice.service.OrderService;
 
 public class Main {
     static void main()
     {
         System.out.println("Payment service practice");
         PaymentServiceHelper payment = new Stripe();
-        PaymentService  paymentService = new PaymentService(payment);
-        paymentService.pay();
+        OrderService orderService = new OrderService(payment);
+        orderService.pay();
     }
 }
