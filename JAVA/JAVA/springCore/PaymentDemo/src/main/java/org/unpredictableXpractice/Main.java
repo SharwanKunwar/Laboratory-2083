@@ -16,6 +16,5 @@ public class Main {
 
         PaymentService ps = new PaymentService(payment);
         ps.pay();
-
     }
 }
