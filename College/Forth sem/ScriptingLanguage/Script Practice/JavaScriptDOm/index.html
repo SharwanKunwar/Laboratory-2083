@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom manipulation</title>
+</head>
+
+<body>
+    <p id="para">Q2. Write a JS program to highlight all words over eight characters long in the paragraph text (with a
+        red background).</p>
+
+    <script>
+
+        const paragraph = document.getElementById("para");
+        const words = paragraph.textContent.split(" ");
+        const highlightedWords = words.map(word => {
+            if (word.length > 8) {
+                return `<span style="background-color: red; color: white;">${word}</span>`;
+            }
+            return word;
+        });
+        paragraph.innerHTML = highlightedWords.join(" ");
+
+    </script>
+</body>
+
+</html>
