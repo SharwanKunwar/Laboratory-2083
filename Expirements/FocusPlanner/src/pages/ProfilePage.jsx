@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import useAuthStore from '../data/authStore';
+import ProfileDataCard from '../components/ProfileDataCard';
 import { FiUser, FiLock, FiLogOut, FiDatabase, FiCheckCircle, FiAlertCircle, FiMail } from 'react-icons/fi';
-import { Button, Input, Form, Spin, notification } from 'antd';
+import { Button, Input, Form, notification } from 'antd';
 
 function ProfilePage() {
   const { token, user, login, register, logout, fetchWithAuth } = useAuthStore();
   const [loading, setLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [testData, setTestData] = useState(null);
+  const [profileCards, setProfileCards] = useState([]);
 
   const onFinish = async (values) => {
     setLoading(true);
     let result;
     
     if (isLogin) {
-      result = await login(values.username, values.password);
+      result = await login(values.email, values.password);
     } else {
-      result = await register(values.username, values.email, values.password);
+      result = await register(values.name, values.email, values.password);
     }
     
     setLoading(false);
@@ -37,16 +39,30 @@ function ProfilePage() {
     }
   };
 
+  const normalizeFetchedData = (data) => {
+    if (Array.isArray(data)) return data;
+    if (!data || typeof data !== 'object') return [];
+
+    if (Array.isArray(data.items)) return data.items;
+    if (Array.isArray(data.data)) return data.data;
+    if (data.data && typeof data.data === 'object') return [data.data];
+    if (data.items && typeof data.items === 'object') return [data.items];
+
+    return [data];
+  };
+
   const testBackendConnection = async () => {
     setLoading(true);
     try {
-      // Assuming a generic endpoint like /api/tasks or /api/users/me
-      // You can change this to match your actual Spring Boot controller endpoint
-      const response = await fetchWithAuth('/api/tasks'); 
+      const response = await fetchWithAuth('/api/tasks');
       const data = await response.json();
+      const normalizedData = normalizeFetchedData(data);
+
       setTestData(data);
+      setProfileCards(normalizedData);
       notification.success({ message: 'Data fetched successfully!' });
     } catch (error) {
+      setProfileCards([]);
       notification.error({ message: 'Fetch failed', description: error.message });
     } finally {
       setLoading(false);
@@ -56,7 +72,7 @@ function ProfilePage() {
   if (!token) {
     return (
       <div className="w-full h-full flex justify-center items-center p-6">
-        <div className="bg-white/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2rem] p-10 w-full max-w-md border border-white/60">
+        <div className="bg-white/40 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-4xl p-10 w-full max-w-md border border-white/60">
           <div className="flex flex-col items-center mb-8">
             <div className="w-16 h-16 bg-white/60 rounded-full flex items-center justify-center shadow-inner mb-4">
               <FiUser className="text-3xl text-slate-600" />
@@ -68,31 +84,31 @@ function ProfilePage() {
           </div>
 
           <Form name="authForm" onFinish={onFinish} layout="vertical">
-            <Form.Item
-              name="username"
-              rules={[{ required: true, message: 'Please input your username!' }]}
-            >
-              <Input 
-                prefix={<FiUser className="text-slate-400 mr-2" />} 
-                placeholder="Username" 
-                size="large"
-                className="rounded-xl bg-white/50 border-white/60 shadow-sm backdrop-blur-md hover:bg-white/70 focus:bg-white/80"
-              />
-            </Form.Item>
-
             {!isLogin && (
               <Form.Item
-                name="email"
-                rules={[{ required: true, message: 'Please input your email!' }, { type: 'email', message: 'Enter a valid email!' }]}
+                name="name"
+                rules={[{ required: true, message: 'Please input your full name!' }]}
               >
                 <Input 
-                  prefix={<FiMail className="text-slate-400 mr-2" />} 
-                  placeholder="Email Address" 
+                  prefix={<FiUser className="text-slate-400 mr-2" />} 
+                  placeholder="Full Name" 
                   size="large"
                   className="rounded-xl bg-white/50 border-white/60 shadow-sm backdrop-blur-md hover:bg-white/70 focus:bg-white/80"
                 />
               </Form.Item>
             )}
+
+            <Form.Item
+              name="email"
+              rules={[{ required: true, message: 'Please input your email!' }, { type: 'email', message: 'Enter a valid email!' }]}
+            >
+              <Input 
+                prefix={<FiMail className="text-slate-400 mr-2" />} 
+                placeholder="Email Address" 
+                size="large"
+                className="rounded-xl bg-white/50 border-white/60 shadow-sm backdrop-blur-md hover:bg-white/70 focus:bg-white/80"
+              />
+            </Form.Item>
 
             <Form.Item
               name="password"
@@ -139,11 +155,11 @@ function ProfilePage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* User Details Card */}
-        <div className="bg-white/50 backdrop-blur-2xl shadow-xl rounded-[2rem] border border-white/60 p-8 flex flex-col items-center">
+        <div className="bg-white/50 backdrop-blur-2xl shadow-xl rounded-4xl border border-white/60 p-8 flex flex-col items-center">
           <div className="w-24 h-24 bg-white/80 rounded-full shadow-inner flex items-center justify-center mb-4">
             <FiUser className="text-4xl text-slate-600" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-800">{user?.username || 'Authenticated User'}</h2>
+          <h2 className="text-2xl font-bold text-slate-800">{user?.name || user?.email || 'Authenticated User'}</h2>
           
           <div className="flex items-center gap-2 mt-2 px-4 py-1.5 bg-green-100 text-green-700 rounded-full text-sm font-medium border border-green-200">
             <FiCheckCircle /> Connected to localhost:8080
@@ -159,7 +175,7 @@ function ProfilePage() {
         </div>
 
         {/* Backend Controller Action Card */}
-        <div className="bg-white/50 backdrop-blur-2xl shadow-xl rounded-[2rem] border border-white/60 p-8 flex flex-col justify-between">
+        <div className="bg-white/50 backdrop-blur-2xl shadow-xl rounded-4xl border border-white/60 p-8 flex flex-col justify-between">
           <div>
             <h3 className="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
               <FiDatabase className="text-indigo-500" /> Backend Testing
@@ -178,18 +194,37 @@ function ProfilePage() {
             </Button>
           </div>
 
-          {testData && (
-            <div className="mt-6 bg-slate-800 rounded-xl p-4 overflow-auto max-h-48 text-green-400 text-xs font-mono shadow-inner">
-              <pre>{JSON.stringify(testData, null, 2)}</pre>
-            </div>
-          )}
-          {!testData && !loading && (
-             <div className="mt-6 bg-white/40 rounded-xl p-4 flex items-center gap-3 text-slate-500 text-sm italic border border-white/60">
-               <FiAlertCircle /> No data fetched yet. Click the button above to test your controller.
-             </div>
-          )}
         </div>
 
+      </div>
+
+      <div className="mt-8 rounded-4xl border border-white/60 bg-white/50 p-6 shadow-xl backdrop-blur-2xl md:p-8">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h3 className="text-xl font-bold text-slate-800">Fetched Profile Cards</h3>
+            <p className="mt-1 text-sm text-slate-500">
+              Each fetched record is rendered as a reusable profile card with its key details.
+            </p>
+          </div>
+          <div className="rounded-full bg-indigo-100 px-3 py-1 text-sm font-medium text-indigo-700">
+            {profileCards.length > 0 ? `${profileCards.length} records` : 'No records'}
+          </div>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {profileCards.length > 0 ? (
+            profileCards.map((card, index) => (
+              <ProfileDataCard key={`${card?.id || 'record'}-${index}`} item={card} />
+            ))
+          ) : (
+            <div className="col-span-full rounded-2xl border border-dashed border-white/70 bg-white/40 p-5 text-sm text-slate-500">
+              <div className="flex items-center gap-3">
+                <FiAlertCircle className="text-lg text-slate-400" />
+                No fetched data to display yet. Click the backend test button to load records.
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

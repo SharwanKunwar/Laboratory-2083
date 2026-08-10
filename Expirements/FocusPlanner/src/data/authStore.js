@@ -7,14 +7,14 @@ const useAuthStore = create(
       token: null,
       user: null,
 
-      login: async (username, password) => {
+      login: async (email, password) => {
         try {
-          const response = await fetch("http://localhost:8080/auth/login", {
+          const response = await fetch("http://localhost:8080/api/auth/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, password }),
           });
 
           if (!response.ok) {
@@ -23,7 +23,7 @@ const useAuthStore = create(
 
           const data = await response.json();
           const token = data.token || data.accessToken || data.jwt || (typeof data === "string" ? data : null);
-          const user = data.user || { username };
+          const user = data.user || { email };
 
           set({ token, user });
           return { success: true };
@@ -33,26 +33,24 @@ const useAuthStore = create(
         }
       },
 
-      register: async (username, email, password) => {
+      register: async (name, email, password) => {
         try {
-          // You may need to adjust the endpoint (/auth/register) based on your backend
-          const response = await fetch("http://localhost:8080/auth/register", {
+          const response = await fetch("http://localhost:8080/api/auth/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, email, password }),
+            body: JSON.stringify({ name, email, password }),
           });
 
           if (!response.ok) {
             throw new Error("Registration failed. Please try again.");
           }
 
-          // If backend returns a token upon registration, log them in automatically
           const data = await response.json();
           if (data.token || data.accessToken || data.jwt) {
             const token = data.token || data.accessToken || data.jwt;
-            const user = data.user || { username };
+            const user = data.user || { email, name };
             set({ token, user });
           }
           
