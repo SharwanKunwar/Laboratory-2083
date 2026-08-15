@@ -8,7 +8,7 @@ Based on the Unit 1 course schedule (History of OS, Objectives, Types of OS, Lin
 *(High probability of appearing in exams — asked almost every semester)*
 
 ### Q1. What is an Operating System? Define it.
-An **Operating System (OS)** is system software that acts as an intermediary between computer hardware and the user/application programs. It manages hardware resources (CPU, memory, I/O devices, storage) and provides a convenient, secure, and efficient environment in which users can execute their programs.
+An Operating System (OS) is system software that manages computer hardware and provides an interface between users/applications and hardware. It manages resources such as CPU, memory, storage, and I/O devices, enables multitasking, and provides security and protection for system resources and user data.
 
 ---
 
