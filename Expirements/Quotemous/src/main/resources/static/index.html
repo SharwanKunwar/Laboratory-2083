@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Quote Platform</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 760px;
+            margin: 20px auto;
+            color: #222
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px
+        }
+
+        .feeling {
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 12px
+        }
+
+        .controls {
+            margin-top: 8px
+        }
+
+        .btn {
+            cursor: pointer;
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-right: 6px
+        }
+
+        #composer {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #eee
+        }
+    </style>
+</head>
+
+<body>
+    <div id="composer">
+        <textarea id="content" placeholder="Share something..." rows="3" style="width:100%"></textarea>
+        <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+            <input id="nickname" placeholder="Nickname (optional)" />
+            <select id="feeling">
+                <option value="HAPPY">HAPPY</option>
+                <option value="SAD">SAD</option>
+                <option value="BROKEN">BROKEN</option>
+                <option value="HOPEFUL">HOPEFUL</option>
+                <option value="ANGRY">ANGRY</option>
+                <option value="GRATEFUL">GRATEFUL</option>
+                <option value="LONELY">LONELY</option>
+                <option value="PEACEFUL">PEACEFUL</option>
+                <option value="NOSTALGIC">NOSTALGIC</option>
+                <option value="MOTIVATED">MOTIVATED</option>
+            </select>
+            <button id="postBtn">Post</button>
+        </div>
+    </div>
+
+    <div id="feed"></div>
+
+    <script>
+        const API = '/api/quotes';
+        const reactedKey = 'reactedIds_v1';
+        const reacted = new Set(JSON.parse(localStorage.getItem(reactedKey) || '[]'));
+
+        function saveReacted() { localStorage.setItem(reactedKey, JSON.stringify(Array.from(reacted))); }
+
+        async function loadFeed() {
+            const res = await fetch(API + '?page=0&size=20');
+            const data = await res.json();
+            const container = document.getElementById('feed');
+            container.innerHTML = '';
+            data.forEach(renderCard);
+        }
+
+        function renderCard(item) {
+            const div = document.createElement('div'); div.className = 'card';
+            div.innerHTML = `<div>${escapeHtml(item.content)}</div>` +
+                `<div style="font-size:0.9em;color:#666;margin-top:6px">— ${escapeHtml(item.nickname || 'Anonymous')} • ${item.feeling}</div>`;
+            const controls = document.createElement('div'); controls.className = 'controls';
+            ['LOVE', 'RELATE', 'INSPIRED', 'SAD'].forEach(t => {
+                const btn = document.createElement('button'); btn.className = 'btn';
+                const count = (item.reactions && item.reactions[t]) || 0;
+                btn.textContent = t + ' ' + count;
+                btn.onclick = async () => {
+                    if (reacted.has(item.id)) return alert('Already reacted (client-side)');
+                    reacted.add(item.id); saveReacted();
+                    // optimistic
+                    btn.textContent = t + ' ' + (count + 1);
+                    await fetch(API + '/' + item.id + '/react', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ type: t }) });
+                };
+                controls.appendChild(btn);
+            });
+            div.appendChild(controls);
+            document.getElementById('feed').appendChild(div);
+        }
+
+        async function post() {
+            const content = document.getElementById('content').value;
+            const nickname = document.getElementById('nickname').value;
+            const feeling = document.getElementById('feeling').value;
+            const res = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content, nickname, feeling }) });
+            if (res.ok) { document.getElementById('content').value = ''; loadFeed(); } else { alert('Error posting'); }
+        }
+
+        document.getElementById('postBtn').addEventListener('click', post);
+        function escapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+        loadFeed();
+    </script>
+</body>
+
+</html>
