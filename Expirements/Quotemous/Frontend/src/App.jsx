@@ -6,9 +6,9 @@ function App() {
 
       <div className="w-[100%] min-h-[2000px] bg-sky-400 rounded-b-lg mb-5 relative ">
         <Navbar />
-        <h1 className="pt-20 text-3xl font-bold">
-          Scroll Down
-        </h1>
+        <div className="bg-red-400 w-full h-screen">
+          box
+        </div>
       </div>
     </div>
   );

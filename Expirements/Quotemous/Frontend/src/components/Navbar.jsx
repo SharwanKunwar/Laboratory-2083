@@ -30,7 +30,7 @@ function Navbar() {
                 duration: 0.3,
                 ease: "easeInOut",
             }}
-            className="sticky top-0 mx-auto  z-50 bg-gray-100/80 backdrop-blur-md h-[65px] border border-white/30 flex items-center justify-center"
+            className="sticky top-0 mx-auto  z-50 bg-gray-50 backdrop-blur-md h-[65px] border border-white/30 flex items-center justify-center"
         >
             <div className="flex items-center gap-8">
                 <span className="font-bold">Logo</span>
