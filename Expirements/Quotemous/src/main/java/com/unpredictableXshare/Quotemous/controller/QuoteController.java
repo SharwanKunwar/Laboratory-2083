@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
@@ -27,5 +28,13 @@ public class QuoteController
     public ResponseEntity<List<Quote>> getAllQuotes()
     {
         return ResponseEntity.ok(quoteService.getAllQuotes());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Quote> getQuoteById(@PathVariable UUID id) {
+        if(quoteService.getQuoteById(id) == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(quoteService.getQuoteById(id));
     }
 }

@@ -3,12 +3,15 @@ package com.unpredictableXshare.Quotemous.service;
 
 import com.unpredictableXshare.Quotemous.entity.Quote;
 import java.util.List;
+import java.util.UUID;
 
 public interface QuoteServiceHandler{
-    //W
+    //Write quote
     Quote createQuote(Quote quote);
-    // Read Quote
+    // Get all Quote
     List<Quote> getAllQuotes();
+    // Get quote by id
+    Quote getQuoteById(UUID id);
 
 
 

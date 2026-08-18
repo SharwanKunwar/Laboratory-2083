@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -22,5 +23,11 @@ public class QuoteService implements QuoteServiceHandler
     @Override
     public List<Quote> getAllQuotes() {
         return quoteRepository.findAll();
+    }
+
+    @Override
+    public Quote getQuoteById(UUID id) {
+        Quote quote = quoteRepository.findById(id).orElseThrow();
+        return quote;
     }
 }
