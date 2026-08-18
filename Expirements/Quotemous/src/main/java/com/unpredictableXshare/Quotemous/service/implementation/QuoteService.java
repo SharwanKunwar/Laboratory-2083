@@ -27,7 +27,20 @@ public class QuoteService implements QuoteServiceHandler
 
     @Override
     public Quote getQuoteById(UUID id) {
-        Quote quote = quoteRepository.findById(id).orElseThrow();
-        return quote;
+        return  quoteRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Quote updateQuote(UUID id, Quote quote)
+    {
+        Quote oldQuote = quoteRepository.findById(id).orElse(null);
+
+        if(oldQuote == null) return null;
+
+        oldQuote.setQuote(quote.getQuote());
+        oldQuote.setNickName(quote.getNickName());
+        oldQuote.setCategory(quote.getCategory());
+
+        return quoteRepository.save(oldQuote);
     }
 }

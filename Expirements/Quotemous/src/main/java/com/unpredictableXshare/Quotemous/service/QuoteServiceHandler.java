@@ -12,6 +12,8 @@ public interface QuoteServiceHandler{
     List<Quote> getAllQuotes();
     // Get quote by id
     Quote getQuoteById(UUID id);
+    // Update quote
+    Quote updateQuote(UUID id, Quote quote);
 
 
 

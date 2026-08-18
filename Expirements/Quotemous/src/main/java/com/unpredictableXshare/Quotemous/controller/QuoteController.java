@@ -18,23 +18,32 @@ public class QuoteController
     private final QuoteServiceHandler quoteService;
 
     @PostMapping("/create")
-    //save quote into database via spring data jpa
     public ResponseEntity<Quote> createQuote(@RequestBody Quote quote) {
         return ResponseEntity.status(HttpStatus.CREATED).body(quoteService.createQuote(quote));
     }
 
     @GetMapping("/all")
-    //Get all quotes from the database via spring data jpa
     public ResponseEntity<List<Quote>> getAllQuotes()
     {
         return ResponseEntity.ok(quoteService.getAllQuotes());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Quote> getQuoteById(@PathVariable UUID id) {
-        if(quoteService.getQuoteById(id) == null){
+    public ResponseEntity<Quote> getQuoteById(@PathVariable UUID id)
+    {
+        Quote quote = quoteService.getQuoteById(id);
+
+        if(quote == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(quote);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Quote> updateQuote(@PathVariable UUID id, @RequestBody Quote quote)
+    {
+        Quote updatedQuote = quoteService.updateQuote(id, quote);
+        if(updatedQuote == null){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(quoteService.getQuoteById(id));
+        return ResponseEntity.ok(updatedQuote);
     }
 }
