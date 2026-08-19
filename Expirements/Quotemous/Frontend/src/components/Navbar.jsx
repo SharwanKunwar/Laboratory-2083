@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -31,10 +32,65 @@ function Navbar() {
             }}
             className="sticky top-0 mx-auto  z-50 bg-white/30 backdrop-blur-2xl h-16.25 border border-white/30 flex items-center justify-center">
 
+            {/* inside div boxes  */}
             <div className="flex justify-between items-center w-full h-full gap-8 px-2 ">
-                <div className="bg-red-400 w-12.5 h-12.5 rounded-full"></div>
-                <div className="bg-gray-50 w-[70%] md:w-[20%] h-12.5 rounded-full"></div>
-                <div className="bg-red-400 w-12.5 h-12.5 rounded-full"></div>
+                {/* left  */}
+                <div className=" w-[30%] h-full flex justify-start items-center">
+                    <div className="bg-red-400 w-12.5 h-12.5 rounded-full"></div>
+                    <h1 className="font-medium text-xl text-shadow-sm ml-3 md:block hidden">Sharwan jung kunwar</h1>
+                </div>
+                {/* right  */}
+                <div className=" w-[70%] h-full flex justify-end items-center gap-5">
+
+                    <div className="bg-white/30 border border-white/30 backdrop-blur-md w-[50%] h-12.5 rounded-full flex items-center justify-center px-6">
+                        <nav className="flex items-center gap-10 text-md  text-black">
+                            <a href="#home" className="hover:text-white hover:text-shadow-sm transition-colors duration-300">
+                                Home
+                            </a>
+
+                            <a href="#about" className="hover:text-white hover:text-shadow-sm transition-colors duration-300">
+                                About
+                            </a>
+
+                            <a href="#projects" className="hover:text-white hover:text-shadow-sm transition-colors duration-300">
+                                Projects
+                            </a>
+
+                            <a href="#skills" className="hover:text-white hover:text-shadow-sm transition-colors duration-300">
+                                Skills
+                            </a>
+
+                            <a href="#contact" className="hover:text-white hover:text-shadow-sm transition-colors duration-300">
+                                Contact
+                            </a>
+                        </nav>
+                    </div>
+
+                    <div className=" w-[20%] h-12.5 rounded-full flex justify-end items-center">
+                        <div className="w-full h-12.5 flex items-center justify-center gap-4 ">
+                            <a
+                                href="#"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                <FaFacebookF size={18} />
+                            </a>
+
+                            <a
+                                href="#"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                <FaGithub size={20} />
+                            </a>
+
+                            <a
+                                href="#"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                            >
+                                <FaLinkedinIn size={18} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </motion.nav>
