@@ -4,6 +4,8 @@ import com.unpredictableXshare.Quotemous.entity.Quote;
 import com.unpredictableXshare.Quotemous.repository.QuoteRepository;
 import com.unpredictableXshare.Quotemous.service.QuoteServiceHandler;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,5 +44,14 @@ public class QuoteService implements QuoteServiceHandler
         oldQuote.setCategory(quote.getCategory());
 
         return quoteRepository.save(oldQuote);
+    }
+
+    @Override
+    public boolean deleteQuote(UUID id)
+    {
+        Quote quote = quoteRepository.findById(id).orElse(null);
+        if (quote == null) return false;
+        quoteRepository.delete(quote);
+        return true;
     }
 }

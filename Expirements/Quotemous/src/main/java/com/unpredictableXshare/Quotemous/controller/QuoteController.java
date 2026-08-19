@@ -46,4 +46,17 @@ public class QuoteController
         }
         return ResponseEntity.ok(updatedQuote);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteQuote(@PathVariable UUID id)
+    {
+        boolean isDeleted = quoteService.deleteQuote(id);
+        if (!isDeleted) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("Quote with id " + id + " not found");
+        }
+        quoteService.deleteQuote(id);
+        return ResponseEntity.ok("Quote deleted successfully");
+    }
 }

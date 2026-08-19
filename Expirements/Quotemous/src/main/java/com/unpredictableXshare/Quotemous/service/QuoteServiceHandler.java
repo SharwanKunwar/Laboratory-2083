@@ -14,6 +14,8 @@ public interface QuoteServiceHandler{
     Quote getQuoteById(UUID id);
     // Update quote
     Quote updateQuote(UUID id, Quote quote);
+    // delete quote
+    boolean deleteQuote(UUID id);
 
 
 
