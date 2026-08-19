@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { RiMenuLine, RiDrawLine } from "@remixicon/react";
 
 function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -36,13 +37,13 @@ function Navbar() {
             <div className="flex justify-between items-center w-full h-full gap-8 px-2 ">
                 {/* left  */}
                 <div className=" w-[30%] h-full flex justify-start items-center">
-                    <div className="bg-red-400 w-12.5 h-12.5 rounded-full"></div>
-                    <h1 className="font-medium text-xl text-shadow-sm ml-3 md:block hidden">Sharwan jung kunwar</h1>
+                    <div className="bg-white/30 border border-white/30 w-12.5 h-12.5 rounded-full flex justify-center items-center backdrop-blur-2xl text-white"><RiDrawLine /></div>
+                    <h1 className="font-medium text-xl text-shadow-sm ml-3 md:block hidden">UnpredictableXCoder</h1>
                 </div>
                 {/* right  */}
                 <div className=" w-[70%] h-full flex justify-end items-center gap-5">
 
-                    <div className="bg-white/30 border border-white/30 backdrop-blur-md w-[50%] h-12.5 rounded-full flex items-center justify-center px-6">
+                    <div className="bg-white/30 border border-white/30 backdrop-blur-md w-[50%] h-12.5 rounded-full md:flex items-center justify-center px-6 hidden">
                         <nav className="flex items-center gap-10 text-md  text-black">
                             <a href="#home" className="hover:text-white hover:text-shadow-sm transition-colors duration-300">
                                 Home
@@ -66,11 +67,11 @@ function Navbar() {
                         </nav>
                     </div>
 
-                    <div className=" w-[20%] h-12.5 rounded-full flex justify-end items-center">
-                        <div className="w-full h-12.5 flex items-center justify-center gap-4 ">
+                    <div className=" w-[20%] h-12.5 rounded-full md:flex justify-end items-center hidden ">
+                        <div className="w-full h-12.5 flex items-center justify-center gap-4  ">
                             <a
                                 href="#"
-                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-indigo-400 transition-all duration-300"
                             >
                                 <FaFacebookF size={18} />
                             </a>
@@ -84,12 +85,14 @@ function Navbar() {
 
                             <a
                                 href="#"
-                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-indigo-400 transition-all duration-300"
                             >
                                 <FaLinkedinIn size={18} />
                             </a>
                         </div>
                     </div>
+
+                    <div className="md:hidden bg-gray-50/30 backdrop-blur-2xl border border-white/30 shadow-sm w-12.5 h-12.5 rounded-full flex justify-center items-center"><RiMenuLine /></div>
                 </div>
             </div>
 
