@@ -4,10 +4,7 @@ import com.unpredictableXshare.Quotemous.entity.Quote;
 import com.unpredictableXshare.Quotemous.repository.QuoteRepository;
 import com.unpredictableXshare.Quotemous.service.QuoteServiceHandler;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 
