@@ -1,20 +1,28 @@
 package com.unpredictableXDetails.People_IKnow.service.implementation;
 
 import com.unpredictableXDetails.People_IKnow.entity.Person;
+import com.unpredictableXDetails.People_IKnow.repository.PersonRepository;
 import com.unpredictableXDetails.People_IKnow.service.PersonServiceHandler;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
-public class PersonService implements PersonServiceHandler {
+@Service
+@AllArgsConstructor
+public class PersonService implements PersonServiceHandler
+{
+    private final PersonRepository repository;
+
     @Override
     public Person createPerson(Person person) {
-        return null;
+        return repository.save(person);
     }
 
     @Override
     public List<Person> getAllPersons() {
-        return List.of();
+        return repository.findAll();
     }
 
     @Override
