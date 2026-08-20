@@ -11,7 +11,7 @@ public interface PersonServiceHandler
     Person createPerson(Person person);
 
     //Read all
-    List<Person> getAllPersons();
+    List<Person> getAllPerson();
 
     //Update
     Person updatePerson(UUID id, Person person);
