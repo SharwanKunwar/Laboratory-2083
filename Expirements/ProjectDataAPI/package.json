@@ -1,0 +1,12 @@
+{
+  "name": "projectAPI",
+  "version": "1.0.0",
+  "description": "Project Details API built with Node.js, Express and Vercel",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
