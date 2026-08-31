@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculate prime or not</title>
+</head>
+
+<body>
+    <script>
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i < Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        let n = 7;
+        document.write(n + (isPrime(n) ? " yes it is prime number" : " No it is not a prime number"));
+    </script>
+</body>
+
+</html>
