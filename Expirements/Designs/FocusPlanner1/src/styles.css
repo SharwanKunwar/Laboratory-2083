@@ -162,12 +162,101 @@
         padding: 26px !important;
     }
 
+    .focus-modal .ant-modal-content {
+        display: flex;
+        height: 100dvh;
+        max-height: 100dvh;
+        flex-direction: column;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: rgba(247, 250, 245, 0.54) !important;
+        border: 1px solid rgba(255, 255, 255, 0.42) !important;
+        box-shadow: 0 28px 80px rgba(17, 24, 19, 0.16) !important;
+        backdrop-filter: blur(18px) !important;
+        -webkit-backdrop-filter: blur(18px) !important;
+    }
+
+    .focus-modal .ant-modal-body {
+        display: flex;
+        min-height: 0;
+        flex: 1;
+        background: transparent;
+    }
+
+    .focus-modal .ant-modal-body>div {
+        width: 100%;
+        min-height: 100%;
+    }
+
+    @media (max-width: 640px) {
+        .focus-modal {
+            left: 40px !important;
+            top: 40px !important;
+            transform: none !important;
+            width: calc(100vw - 80px) !important;
+        }
+    }
+
     .ant-modal-header {
         margin-bottom: 23px !important;
     }
 
     .ant-modal-title {
         font-weight: 600;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-modal-content {
+        color: #dce5dd !important;
+        background: #1c251f !important;
+        border: 1px solid #354138 !important;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42) !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-modal-header {
+        background: transparent !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-modal-title,
+    :root[data-theme="dark"] .task-editor-modal .ant-modal-close {
+        color: #e0e8e1 !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-form-item-label>label {
+        color: #c2cec4 !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-input,
+    :root[data-theme="dark"] .task-editor-modal .ant-input-affix-wrapper,
+    :root[data-theme="dark"] .task-editor-modal .ant-select-selector {
+        color: #e0e8e1 !important;
+        background: #202a23 !important;
+        border-color: #3a473d !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-input::placeholder,
+    :root[data-theme="dark"] .task-editor-modal .ant-select-selection-placeholder {
+        color: #89968d !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-input-data-count {
+        color: #89968d !important;
+        background: transparent !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-select-arrow {
+        color: #a9b7ab !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-btn-default {
+        color: #c6d1c8 !important;
+        background: #26312a !important;
+        border-color: #435147 !important;
+    }
+
+    :root[data-theme="dark"] .task-editor-modal .ant-btn-default:hover {
+        color: #e4eee5 !important;
+        background: #334137 !important;
+        border-color: #5a705f !important;
     }
 
     :root[data-theme="dark"] .ant-form-item-label>label {

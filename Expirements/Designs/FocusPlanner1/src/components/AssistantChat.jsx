@@ -89,7 +89,7 @@ export default function AssistantChat({ task, active = true }) {
     }
 
     return (
-        <div className={`${active ? 'flex' : 'hidden'} h-[370px] min-h-0 flex-col`} aria-label={`AI assistant for ${task.title}`}>
+        <div className={`${active ? 'flex' : 'hidden'} min-h-0 min-w-0 flex-1 flex-col`} aria-label={`AI assistant for ${task.title}`}>
             <div className="mb-3 flex items-center justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-2.5">
                     <span className="grid size-8 shrink-0 place-items-center rounded-[9px] bg-[#e8f0e8] text-[#4d7256] dark:bg-[#2b3c2f] dark:text-[#b7d6b8]"><Bot size={17} /></span>

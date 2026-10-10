@@ -23,19 +23,21 @@ export default function AuthScreen({ onAuthenticate, theme, onToggleTheme }) {
     }
 
     return (
-        <main className="grid min-h-screen grid-cols-[minmax(300px,.95fr)_minmax(470px,1.05fr)] bg-white max-[700px]:grid-cols-1">
-            <section className="relative flex min-h-screen flex-col overflow-hidden bg-[#202d27] px-[45px] py-9 text-[#f0f5ed] max-[700px]:hidden">
-                <div className="pointer-events-none absolute -right-[150px] bottom-16 size-[470px] rounded-full border border-[#d3e6c71f]" />
-                <div className="pointer-events-none absolute -right-[74px] bottom-[140px] size-[318px] rounded-full border border-[#d3e6c71f]" />
+        <main className="grid min-h-screen grid-cols-[minmax(0,7fr)_minmax(0,3fr)] gap-0 overflow-y-auto bg-[#e8ede6] p-[60px] max-[700px]:grid-cols-1">
+            <motion.section className="relative flex min-h-[calc(100dvh-120px)] flex-col overflow-hidden rounded-l-md bg-[#202d27] px-[45px] py-9 text-[#f0f5ed] max-[700px]:hidden" initial={{ opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
+                <motion.div className="pointer-events-none absolute -right-[150px] bottom-16 size-[470px] rounded-full border border-[#d3e6c71f]" animate={{ rotate: 360 }} transition={{ duration: 75, repeat: Infinity, ease: 'linear' }} />
+                <motion.div className="pointer-events-none absolute -right-[74px] bottom-[140px] size-[318px] rounded-full border border-[#d3e6c71f]" animate={{ rotate: -360 }} transition={{ duration: 58, repeat: Infinity, ease: 'linear' }} />
                 <div className="z-10 flex items-center gap-2.5 text-sm font-bold"><span className="grid size-[30px] place-items-center rounded-[9px] bg-[#b9d79e] text-[#243a30]"><Focus size={19} /></span><span>FocusPlanner</span></div>
                 <div className="z-10 my-auto py-5 pb-[50px]">
-                    <p className="mb-4 text-[10px] font-bold tracking-[1px] text-[#b9d79e]">LESS NOISE. MORE MEANING.</p>
-                    <h1 className="mb-4 mt-[17px] font-display text-[clamp(43px,5vw,64px)] leading-[1.05] text-[#f4f5ed]">Make room<br />for your best work.</h1>
-                    <p className="max-w-[345px] text-[13px] leading-[1.8] text-[#b8c4ba]">A thoughtful place to plan your day, protect your attention, and see good work through.</p>
+                    <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}>
+                        <p className="mb-4 text-[10px] font-bold tracking-[1px] text-[#b9d79e]">LESS NOISE. MORE MEANING.</p>
+                        <h1 className="mb-4 mt-[17px] font-display text-[clamp(43px,5vw,64px)] leading-[1.05] text-[#f4f5ed]">Make room<br />for your best work.</h1>
+                        <p className="max-w-[345px] text-[13px] leading-[1.8] text-[#b8c4ba]">A thoughtful place to plan your day, protect your attention, and see good work through.</p>
+                    </motion.div>
                 </div>
                 <div className="z-10 flex items-center gap-[11px] text-[10px] text-[#9daa9e]"><span className="h-px w-6 bg-[#b9d79e]" />A little more focus, every day.</div>
-            </section>
-            <motion.section className="relative grid min-h-screen place-items-center bg-[#fbfcf9] px-[35px] py-[50px] transition-colors max-[700px]:flex max-[700px]:flex-col max-[700px]:justify-start max-[560px]:px-[23px] max-[560px]:py-[25px] dark:bg-[#151d18]" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+            </motion.section>
+            <motion.section className="relative grid min-h-[calc(100dvh-120px)] place-items-center rounded-r-md bg-[#fbfcf9] px-[35px] py-[50px] transition-colors max-[700px]:flex max-[700px]:flex-col max-[700px]:justify-start max-[560px]:px-[23px] max-[560px]:py-[25px] max-[700px]:rounded-md dark:bg-[#151d18]" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
                 <Button className="!absolute !right-8 !top-8 !grid !size-9 !place-items-center !text-[#526258] dark:!text-[#c3d0c6] max-[560px]:!right-[18px] max-[560px]:!top-[18px]" type="text" aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`} aria-pressed={theme === 'dark'} icon={theme === 'light' ? <Moon size={18} /> : <Sun size={18} />} onClick={onToggleTheme} />
                 <div className="mb-auto hidden w-full items-center gap-[9px] text-[13px] font-bold text-[#314638] max-[700px]:flex max-[560px]:mb-auto"><span className="grid size-[30px] place-items-center rounded-[9px] bg-[#b9d79e] text-[#243a30]"><Focus size={18} /></span> FocusPlanner</div>
                 <div className="w-full max-w-[370px] max-[700px]:my-auto max-[560px]:mt-[55px]">

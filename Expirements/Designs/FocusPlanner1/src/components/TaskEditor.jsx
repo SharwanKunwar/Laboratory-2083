@@ -36,6 +36,7 @@ export default function TaskEditor({ open, task, onCancel, onSave }) {
             onCancel={onCancel}
             footer={null}
             destroyOnHidden
+            className="task-editor-modal"
             width={520}
         >
             <Form form={form} layout="vertical" requiredMark={false} onFinish={submit} className="[&_.ant-form-item]:!mb-4">
