@@ -59,6 +59,18 @@ export default function CompletionHeatmap({ tasks }) {
     const bestDayLabel = mostProductiveDay
         ? new Date(`${mostProductiveDay.key}T12:00:00`).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
         : 'No completions yet';
+    const activeDates = [...new Set(dailyTotals.map((day) => day.key))].sort();
+    const longestStreak = activeDates.reduce((best, key, index) => {
+        if (index === 0) return { value: 1, label: key };
+        const previous = new Date(`${activeDates[index - 1]}T12:00:00`);
+        const current = new Date(`${key}T12:00:00`);
+        const offset = Math.round((current - previous) / (1000 * 60 * 60 * 24));
+        if (offset === 1) {
+            const nextValue = best.value + 1;
+            return { value: nextValue, label: key };
+        }
+        return best.value > 1 ? best : { value: 1, label: key };
+    }, { value: 0, label: '' });
     const monthLabels = Array.from({ length: 12 }, (_, month) => ({
         month,
         index: weeks.findIndex((week) => week.some((day) => day.date.getMonth() === month && day.date.getDate() === 1)),
@@ -77,15 +89,8 @@ export default function CompletionHeatmap({ tasks }) {
                     <button className="grid size-[26px] place-items-center rounded border-0 bg-transparent text-[#63766a] hover:bg-[#edf3ed] hover:text-[#315c4b] disabled:cursor-not-allowed disabled:text-[#c0c9c1] dark:text-[#b5c6b7] dark:hover:bg-[#303b33] dark:hover:text-white dark:disabled:text-[#647067]" type="button" aria-label="Next year" onClick={() => setSelectedYear((year) => Math.min(currentYear, year + 1))} disabled={selectedYear >= currentYear}><ChevronRight size={15} /></button>
                 </div>
             </div>
-            <div className="grid grid-cols-[minmax(155px,.72fr)_minmax(0,3fr)] items-center gap-[22px] max-[800px]:grid-cols-[minmax(135px,.65fr)_minmax(0,3fr)] max-[800px]:gap-[14px] max-[560px]:grid-cols-1 max-[560px]:gap-[13px]">
-                <aside className="flex min-h-[106px] flex-col justify-center border-r border-[#e2e8e2] py-[5px] pl-[3px] pr-[18px] dark:border-[#303b33] max-[560px]:grid max-[560px]:min-h-0 max-[560px]:grid-cols-[auto_1fr_auto_1fr] max-[560px]:items-baseline max-[560px]:gap-x-[7px] max-[560px]:border-b max-[560px]:border-r-0 max-[560px]:pb-[10px] max-[560px]:pr-0" aria-label="Completion summary">
-                    <span className="font-display text-[37px] leading-none text-[#2d4735] dark:text-[#c5e2c6] max-[560px]:text-[25px]">{totalCompleted}</span>
-                    <span className="mt-1 text-[10px] text-[#7f8b82] dark:text-[#a4b0a6] max-[560px]:mt-0">tasks completed</span>
-                    <div className="my-[11px] h-px bg-[#e8ede7] dark:bg-[#303b33] max-[560px]:hidden" />
-                    <div className="flex items-baseline justify-between gap-[5px] text-[9px] leading-[1.75] text-[#849087] dark:text-[#a4b0a6] max-[560px]:contents"><span>Active days</span><strong className="text-right text-[9px] font-semibold text-[#485c4d] dark:text-[#c0cec2]">{dailyTotals.length}</strong></div>
-                    <div className="flex items-baseline justify-between gap-[5px] text-[9px] leading-[1.75] text-[#849087] dark:text-[#a4b0a6] max-[560px]:contents"><span>Best day</span><strong className="text-right text-[9px] font-semibold text-[#485c4d] dark:text-[#c0cec2]">{mostProductiveDay ? `${mostProductiveDay.count} · ${bestDayLabel}` : '—'}</strong></div>
-                </aside>
-                <div className="min-w-0">
+            <div className="grid grid-cols-[40%_60%] items-center gap-[22px] max-[800px]:gap-[14px] max-[560px]:grid-cols-1 max-[560px]:gap-[13px]">
+                <div className="min-w-0 order-2 md:order-2">
                     <div className="max-w-full overflow-x-auto [scrollbar-color:#cbd8cc_transparent] [scrollbar-width:thin]">
                         <div className="flex w-max items-start gap-2">
                             <div className="grid grid-rows-[repeat(7,11px)] gap-[3px] pt-[18px] text-right text-[8px] leading-[11px] text-[#839087] dark:text-[#9ba89e]" aria-hidden="true">
@@ -114,6 +119,17 @@ export default function CompletionHeatmap({ tasks }) {
                         <span className="ml-0.5">More</span>
                     </div>
                 </div>
+                <aside className="order-1 flex min-h-[106px] flex-col justify-center gap-3 border-l border-[#e2e8e2] py-[5px] pl-[18px] pr-[3px] dark:border-[#303b33] max-[560px]:grid max-[560px]:min-h-0 max-[560px]:grid-cols-[auto_1fr_auto_1fr] max-[560px]:items-baseline max-[560px]:gap-x-[7px] max-[560px]:border-l-0 max-[560px]:border-t max-[560px]:pt-[10px] max-[560px]:pl-0 max-[560px]:pr-0" aria-label="Completion summary">
+                    <div className="rounded-[14px] border border-[#e9efe8] bg-[#f7faf7] p-[11px] dark:border-[#324036] dark:bg-[#1f2b25]">
+                        <span className="text-[9px] font-bold tracking-[1px] text-[#8a978e] dark:text-[#96a49a]">THIS YEAR</span>
+                        <div className="mt-[6px] flex items-end gap-[7px]"><span className="font-display text-[37px] leading-none text-[#2d4735] dark:text-[#c5e2c6] max-[560px]:text-[25px]">{totalCompleted}</span><span className="pb-[4px] text-[10px] text-[#7f8b82] dark:text-[#a4b0a6]">tasks</span></div>
+                    </div>
+                    <div className="grid gap-[7px] rounded-[14px] border border-[#e9efe8] bg-[#f7faf7] p-[10px] dark:border-[#324036] dark:bg-[#1f2b25]">
+                        <div className="flex items-center justify-between gap-[5px] text-[9px] leading-[1.5] text-[#849087] dark:text-[#a4b0a6]"><span>Active days</span><strong className="text-right text-[9px] font-semibold text-[#485c4d] dark:text-[#c0cec2]">{dailyTotals.length}</strong></div>
+                        <div className="flex items-center justify-between gap-[5px] text-[9px] leading-[1.5] text-[#849087] dark:text-[#a4b0a6]"><span>Best day</span><strong className="text-right text-[9px] font-semibold text-[#485c4d] dark:text-[#c0cec2]">{mostProductiveDay ? `${mostProductiveDay.count} · ${bestDayLabel}` : '—'}</strong></div>
+                        <div className="flex items-center justify-between gap-[5px] text-[9px] leading-[1.5] text-[#849087] dark:text-[#a4b0a6]"><span>Focus streak</span><strong className="text-right text-[9px] font-semibold text-[#485c4d] dark:text-[#c0cec2]">{longestStreak.value ? `${longestStreak.value} days` : '—'}</strong></div>
+                    </div>
+                </aside>
             </div>
         </section>
     );

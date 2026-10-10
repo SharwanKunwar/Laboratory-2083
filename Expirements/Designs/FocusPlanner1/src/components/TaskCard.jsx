@@ -16,10 +16,14 @@ function durationFor(task) {
 
 export default function TaskCard({ task, compact = false, onFocus, onEdit, onDelete, onNote }) {
     const created = task.createdAt ? new Date(task.createdAt) : null;
+    const overdue = task.status !== 'COMPLETED'
+        && created
+        && !Number.isNaN(created.valueOf())
+        && Date.now() - created.getTime() >= 3 * 24 * 60 * 60 * 1000;
     const duration = durationFor(task);
 
     return (
-        <motion.article className={`relative flex min-w-0 items-center gap-[14px] overflow-hidden rounded-[7px] border border-[#e4e9e4] bg-white py-[15px] pl-[17px] pr-3 transition hover:border-[#cbd8cb] hover:shadow-[0_5px_16px_rgba(35,58,43,.045)] dark:border-[#354138] dark:bg-[#202a23] dark:hover:border-[#536957] ${compact ? 'gap-2 py-[11px] pr-[7px]' : ''}`} layout initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.article className={`glass-card relative flex min-w-0 items-center gap-[14px] overflow-hidden rounded-[18px] border border-white/60 bg-white/65 py-[15px] pl-[17px] pr-3 transition hover:border-[#cbd8cb] hover:shadow-[0_16px_30px_rgba(35,58,43,.08)] dark:border-[#354138] dark:bg-[#202a23]/75 dark:hover:border-[#536957] ${compact ? 'gap-2 py-[11px] pr-[7px]' : ''}`} layout whileHover={{ y: -2 }} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <span className={`absolute bottom-0 left-0 top-0 w-[3px] ${task.priority === 'HIGH' ? 'bg-[#cb775d]' : task.priority === 'MEDIUM' ? 'bg-[#d2ae62]' : 'bg-[#79a18b]'}`} aria-hidden="true" />
             <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-[7px]"><h3 className="m-0 min-w-0 break-words text-xs font-semibold leading-[1.5] text-[#344239] dark:text-[#dce5dd] max-[560px]:text-[11px]">{task.title}</h3><Tag className="!m-0 !rounded !border-0 !px-[5px] !text-[9px] !leading-[17px]" color={priorityColors[task.priority]}>{task.priority}</Tag></div>
@@ -27,6 +31,7 @@ export default function TaskCard({ task, compact = false, onFocus, onEdit, onDel
                 <div className={`mt-[7px] flex flex-wrap items-center gap-[5px] ${compact ? '!mt-1' : ''}`}>
                     <Tag className={`!m-0 !rounded !border-0 !px-[6px] !text-[9px] !leading-[18px] ${task.status === 'PENDING' ? '!bg-[#f8f2df] !text-[#947331] dark:!bg-[#3a3425] dark:!text-[#dfc17c]' : task.status === 'IN_PROGRESS' ? '!bg-[#eaf1f7] !text-[#4e7290] dark:!bg-[#253646] dark:!text-[#a7c9e3]' : '!bg-[#e8f1e8] !text-[#477456] dark:!bg-[#263b2e] dark:!text-[#b2d3b2]'}`}>{statusLabels[task.status] || task.status}</Tag>
                     <Tag className="!m-0 !rounded !border-0 !bg-[#f0f3ef] !px-[6px] !text-[9px] !leading-[18px] !text-[#748178] dark:!bg-[#303b33] dark:!text-[#bcc8be]">{whenLabels[task.forWhen] || task.forWhen}</Tag>
+                    {overdue && <Tag title="Incomplete for at least 3 days" className="!m-0 !rounded !border-0 !bg-[#fae7e1] !px-[6px] !text-[9px] !leading-[18px] !text-[#a64e39] dark:!bg-[#432d28] dark:!text-[#efad9c]">Overdue</Tag>}
                     {created && !Number.isNaN(created.valueOf()) && <span className="text-[9px] text-[#98a29a] dark:text-[#9aa79d]">Added {created.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>}
                     {duration && <span className="text-[9px] text-[#98a29a] dark:text-[#9aa79d]">Focus {duration}</span>}
                 </div>
