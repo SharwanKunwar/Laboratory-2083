@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import TaskCard from './TaskCard.jsx';
 import CompletionHeatmap from './CompletionHeatmap.jsx';
+import QuoteOfDay from './QuoteOfDay.jsx';
 
 const chartColors = { PENDING: '#d3a753', IN_PROGRESS: '#5c83aa', COMPLETED: '#4d8d72' };
 
@@ -23,6 +24,7 @@ export default function Dashboard({ stats, tasks, onViewAll, onFocus, onNote }) 
                 <div><span className="text-[10px] font-bold tracking-[1px] text-[#708574] dark:text-[#a8c1ab]">A CLEARER DAY STARTS HERE</span><h2 className="mb-1 mt-2 font-display text-[28px] font-normal text-[#27392e] dark:text-[#e2ebe2] max-[560px]:max-w-[255px] max-[560px]:text-[23px]">Small steps, <em className="font-normal text-[#507459] dark:text-[#a4c99e]">real progress.</em></h2><p className="m-0 text-xs text-[#748276] dark:text-[#adbaae] max-[560px]:max-w-[240px] max-[560px]:leading-[1.55]">Choose what matters, then give it your full attention.</p></div>
                 <div className="flex flex-col items-center gap-2.5 pr-[21px] text-[#52745a] max-[560px]:pr-0"><Sparkles size={19} /><span className="text-[10px] max-[560px]:max-w-[70px] max-[560px]:text-center">{new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}</span></div>
             </section>
+            <QuoteOfDay />
             <section className="mb-[25px] grid grid-cols-4 gap-[13px] max-[1050px]:gap-[9px] max-[560px]:mb-[23px] max-[560px]:grid-cols-2 max-[560px]:gap-2" aria-label="Task summary">
                 <StatCard label="All tasks" value={stats.totalTasks ?? 0} icon={<ListTodo size={19} />} tint="green" />
                 <StatCard label="To do" value={stats.pendingTasks ?? 0} icon={<CircleDashed size={19} />} tint="yellow" />

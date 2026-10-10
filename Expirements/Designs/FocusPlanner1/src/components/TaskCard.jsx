@@ -23,7 +23,7 @@ export default function TaskCard({ task, compact = false, onFocus, onEdit, onDel
     const duration = durationFor(task);
 
     return (
-        <motion.article className={`glass-card relative flex min-w-0 items-center gap-[14px] overflow-hidden rounded-[18px] border border-white/60 bg-white/65 py-[15px] pl-[17px] pr-3 transition hover:border-[#cbd8cb] hover:shadow-[0_16px_30px_rgba(35,58,43,.08)] dark:border-[#354138] dark:bg-[#202a23]/75 dark:hover:border-[#536957] ${compact ? 'gap-2 py-[11px] pr-[7px]' : ''}`} layout whileHover={{ y: -2 }} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.article className={`glass-card relative flex min-w-0 items-center gap-[14px] overflow-hidden rounded-[18px] border border-white/60 bg-white/65 py-[15px] pl-[17px] pr-3 transition hover:border-[#cbd8cb] hover:shadow-[0_4px_6px_rgba(35,58,43,.09)] dark:border-[#354138] dark:bg-[#202a23]/75 dark:hover:border-[#536957] ${compact ? 'gap-2 py-[11px] pr-[7px]' : ''}`} layout whileHover={{ y: -2 }} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
             <span className={`absolute bottom-0 left-0 top-0 w-[3px] ${task.priority === 'HIGH' ? 'bg-[#cb775d]' : task.priority === 'MEDIUM' ? 'bg-[#d2ae62]' : 'bg-[#79a18b]'}`} aria-hidden="true" />
             <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-[7px]"><h3 className="m-0 min-w-0 break-words text-xs font-semibold leading-[1.5] text-[#344239] dark:text-[#dce5dd] max-[560px]:text-[11px]">{task.title}</h3><Tag className="!m-0 !rounded !border-0 !px-[5px] !text-[9px] !leading-[17px]" color={priorityColors[task.priority]}>{task.priority}</Tag></div>
